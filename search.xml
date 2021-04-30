@@ -223,5 +223,8 @@
 <p>和注释不一样，能够通过cmd使用javadoc命令生成文档网站</p>
 <p>javadoc -encoding UTF-8 -charset UTF-8 xx.java</p>
 ]]></content>
+      <tags>
+        <tag>“java”</tag>
+      </tags>
   </entry>
 </search>
