@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Java初见 ¶三大版本 JavaSE，标准版，桌面程序，控制台开始 javaME，嵌入式开发，手机，小家电 javaEE，E企业级开发，web端，服务器开发 JDK，Java Development Kit JRE，Java Runtime Environment JVM，Java Virtual Machine">
+<meta name="description" content="Java方法详解 ¶什么是方法 方法概述：   是执行某个特定功能的代码片段   方法包含于类或对象中   方法在程序中被创建，在其他地方被引用   设计方法的原则：   方法的本质是功能块，实现某个功能   设计方法的时候最好保持方法的原子性（只实现一个功能）   方法的定义： 方法包含一个方法头和方法体：  修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型 返回值类型：可能会返回值，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java初见">
-<meta property="og:url" content="https://wirenjie.github.io/2021/04/30/java/Java%E5%88%9D%E8%A7%81/index.html">
+<meta property="og:title" content="Java方法详解">
+<meta property="og:url" content="https://wirenjie.github.io/2021/04/30/java/Java%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="魏仁杰的个人博客">
-<meta property="og:description" content="Java初见 ¶三大版本 JavaSE，标准版，桌面程序，控制台开始 javaME，嵌入式开发，手机，小家电 javaEE，E企业级开发，web端，服务器开发 JDK，Java Development Kit JRE，Java Runtime Environment JVM，Java Virtual Machine">
+<meta property="og:description" content="Java方法详解 ¶什么是方法 方法概述：   是执行某个特定功能的代码片段   方法包含于类或对象中   方法在程序中被创建，在其他地方被引用   设计方法的原则：   方法的本质是功能块，实现某个功能   设计方法的时候最好保持方法的原子性（只实现一个功能）   方法的定义： 方法包含一个方法头和方法体：  修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型 返回值类型：可能会返回值，">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-30T06:43:17.000Z">
-<meta property="article:modified_time" content="2021-04-30T09:52:52.145Z">
+<meta property="article:modified_time" content="2021-04-30T09:52:46.838Z">
 <meta property="article:author" content="魏仁杰">
 <meta property="article:tag" content="“Java基础”">
 <meta name="twitter:card" content="summary">
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://wirenjie.github.io/2021/04/30/java/Java初见/"/>
+  <link rel="canonical" href="https://wirenjie.github.io/2021/04/30/java/Java方法/"/>
 
 
 
 
 
-  <title>Java初见 | 魏仁杰的个人博客</title>
+  <title>Java方法详解 | 魏仁杰的个人博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wirenjie.github.io/2021/04/30/java/Java%E5%88%9D%E8%A7%81/">
+    <link itemprop="mainEntityOfPage" href="https://wirenjie.github.io/2021/04/30/java/Java%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java初见</h1>
+          <h1 class="post-title" itemprop="name headline">Java方法详解</h1>
         
 
         <div class="post-meta">
@@ -346,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2021/04/30/java/Java%E5%88%9D%E8%A7%81/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/04/30/java/Java%E5%88%9D%E8%A7%81/" itemprop="commentCount"></span>
+                <a href="/2021/04/30/java/Java%E6%96%B9%E6%B3%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/04/30/java/Java%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  57
+                  1.3k
                 </span>
               
 
@@ -394,14 +394,132 @@
       
 
       
-        <h1 id="java-chu-jian">Java初见</h1>
-<h2 id="san-da-ban-ben"><a class="header-anchor" href="#三大版本">¶</a>三大版本</h2>
-<p><strong>JavaSE</strong>，标准版，桌面程序，控制台开始</p>
-<p><strong>javaME</strong>，嵌入式开发，手机，小家电</p>
-<p><strong>javaEE</strong>，E企业级开发，web端，服务器开发</p>
-<p><strong>JDK</strong>，Java Development Kit</p>
-<p><strong>JRE</strong>，Java Runtime Environment</p>
-<p><strong>JVM</strong>，Java Virtual Machine</p>
+        <h1 id="java-fang-fa-xiang-jie">Java方法详解</h1>
+<h2 id="shi-yao-shi-fang-fa"><a class="header-anchor" href="#什么是方法">¶</a>什么是方法</h2>
+<p><strong>方法概述：</strong></p>
+<ol>
+<li>
+<p>是执行某个特定功能的代码片段</p>
+</li>
+<li>
+<p>方法包含于类或对象中</p>
+</li>
+<li>
+<p>方法在程序中被创建，在其他地方被引用</p>
+</li>
+</ol>
+<p><strong>设计方法的原则：</strong></p>
+<ol>
+<li>
+<p>方法的本质是功能块，实现某个功能</p>
+</li>
+<li>
+<p>设计方法的时候最好保持方法的原子性（只实现一个功能）</p>
+</li>
+</ol>
+<p><strong>方法的定义：</strong></p>
+<p>方法包含一个方法头和方法体：</p>
+<ol>
+<li>修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型</li>
+<li>返回值类型：可能会返回值，没有返回值则为void</li>
+<li>方法名：方法名称，和参数表共同构成方法签名</li>
+<li>参数类型：
+<ol>
+<li>可选，可不带参数。</li>
+<li>方法被调用时，传递值给参数</li>
+<li>参数列表指方法的参数类型、顺序和参数的个数</li>
+<li>形参：方法调用用于接收外界输入的数据</li>
+<li>实参：调用方法传递给方法的数据</li>
+</ol>
+</li>
+<li>方法体：具体的方法语句，定义方法的功能</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">修饰符  返回值类型  方法名(参数类型  参数名)&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法体</span></span><br><span class="line">    <span class="keyword">return</span> 返回值;</span><br><span class="line">&#125;</span><br><span class="line">例：</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">//实参：实际调用传递的参数</span></span><br><span class="line">        <span class="keyword">int</span> sum = add(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加法</span></span><br><span class="line">	<span class="comment">//形参：用来定义的</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>==return 0; //表示终止方法，类似break==</p>
+<p><strong>方法的调用</strong></p>
+<p>调用方式都是  对象名.方法名，但有两种方式</p>
+<ol>
+<li>
+<p>方法返回值时，方法调用被当作一个值：</p>
+<p>如：int num = max(30, 40);</p>
+</li>
+<li>
+<p>如果方法无返回值，调用为一条语句</p>
+<p>如：System.out.println(“XXX”);</p>
+</li>
+</ol>
+<h2 id="kuo-zhan-zhi-chuan-di-he-yin-yong-chuan-di"><a class="header-anchor" href="#扩展（值传递和引用传递）">¶</a>扩展（值传递和引用传递）</h2>
+<h2 id="fang-fa-de-zhong-zai"><a class="header-anchor" href="#方法的重载">¶</a>方法的重载</h2>
+<p>重载就是在一个类中，有相同的函数名称</p>
+<p>但是形参不同的函数</p>
+<p><strong>重载的原则：</strong></p>
+<ol>
+<li>方法名称必须相同</li>
+<li>参数列表必须不同（个数不同或类型不同，参数排列顺序不同等）</li>
+<li>方法的返回类型可以相同也可以不同</li>
+<li>如果只是返回类型不同不能够称为方法的重载</li>
+</ol>
+<p><strong>实现：</strong></p>
+<ol>
+<li>方法名相同时，编译器会根据调用方法的参数个数、类型等逐个匹配</li>
+<li>匹配完后选择最为准确的方法调用</li>
+<li>如果匹配失败，则编译器报错</li>
+</ol>
+<h2 id="ming-ling-xing-chuan-can-liao-jie"><a class="header-anchor" href="#命令行传参（了解）">¶</a>命令行传参（了解）</h2>
+<p>程序在运行的时候再传递给它消息，通过main()函数实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.renjie.wei.method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String i : args) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;args[]:&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//cmd或terminal中调用传参：</span></span><br><span class="line">D:\JavaSE\基础语法\src\com\renjie\wei\method&gt; javac Demo02.java</span><br><span class="line">    </span><br><span class="line">D:\JavaSE\基础语法\src&gt; </span><br><span class="line">java com.renjie.wei.method.Demo02.java hello world ! <span class="comment">//其中hello world！就是传递的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出如下：</span></span><br><span class="line">args[]:hello</span><br><span class="line">args[]:world</span><br><span class="line">args[]:!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="ke-bian-can-shu"><a class="header-anchor" href="#可变参数">¶</a>可变参数</h2>
+<ol>
+<li>
+<p>Java 1.5开始出现</p>
+</li>
+<li>
+<p>支持传递同类型的可变参数给一个方法</p>
+</li>
+<li>
+<p>声明中，在指定参数类型后加一个省略号(…)</p>
+</li>
+<li>
+<p>一个方法中只能指定一个可变参数</p>
+</li>
+<li>
+<p>但必须是方法的最后一个参数</p>
+</li>
+<li>
+<p>任何普通的参数都必须在可变参数之前声明</p>
+</li>
+<li>
+<p>本质就是数组</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Demo03 demo03 = <span class="keyword">new</span> Demo03();</span><br><span class="line">        demo03.test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//可变参数实质就是数组</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span>... b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">            System.out.println(a+b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="di-gui"><a class="header-anchor" href="#递归">¶</a>递归</h2>
+<ol>
+<li>
+<p>递归就是自己调用自己</p>
+</li>
+<li>
+<p>递归可以用简单的程序解决复杂的问题</p>
+</li>
+<li>
+<p>用少量的程序描述出解题过程所需要的多次重复运算</p>
+</li>
+<li>
+<p>大大减少了程序的代码量</p>
+</li>
+<li>
+<p>递归的能力在于用有限的语句来定义对象的无限集合</p>
+</li>
+</ol>
+<p><strong>递归的结构：</strong></p>
+<ol>
+<li>递归头：什么时候不调用自己，没有头将陷入死循环</li>
+<li>递归体：什么时候调用自身方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Demo04 demo04 = <span class="keyword">new</span> Demo04();</span><br><span class="line">    System.out.println(demo04.fatorial(<span class="number">5</span>));</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fatorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>)&#123;   <span class="comment">//递归边界，递归头</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n * fatorial(n-<span class="number">1</span>);  <span class="comment">//递归体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ji-suan-qi-shi-li"><a class="header-anchor" href="#计算器示例">¶</a>计算器示例</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        Demo05 demo05 = <span class="keyword">new</span> Demo05();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入要使用的功能：&quot;</span>);</span><br><span class="line">        String arith = scanner.nextLine();  <span class="comment">//决定四则运算的符号</span></span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第一个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> x = scanner.nextDouble();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第二个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> y = scanner.nextDouble();</span><br><span class="line">        <span class="keyword">switch</span> (arith)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;+&quot;</span>:  <span class="comment">//加法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.add(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;-&quot;</span>:  <span class="comment">//减法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.sub(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;*&quot;</span>:  <span class="comment">//乘法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.mul(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;/&quot;</span>:  <span class="comment">//除法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.div(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">sub</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mul</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a * b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;输入错误请重新输入！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="keyword">return</span> (a / b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -427,7 +545,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://wirenjie.github.io/2021/04/30/java/Java%E5%88%9D%E8%A7%81/" title="Java初见">https://wirenjie.github.io/2021/04/30/java/Java%E5%88%9D%E8%A7%81/</a>
+    <a href="https://wirenjie.github.io/2021/04/30/java/Java%E6%96%B9%E6%B3%95/" title="Java方法详解">https://wirenjie.github.io/2021/04/30/java/Java%E6%96%B9%E6%B3%95/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -455,8 +573,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/04/30/java/Java%E6%96%B9%E6%B3%95/" rel="next" title="Java方法详解">
-                <i class="fa fa-chevron-left"></i> Java方法详解
+              <a href="/2021/04/30/java/java/" rel="next" title="Java之Hello World">
+                <i class="fa fa-chevron-left"></i> Java之Hello World
               </a>
             
           </div>
@@ -464,6 +582,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/30/java/Java%E5%88%9D%E8%A7%81/" rel="prev" title="Java初见">
+                Java初见 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -623,7 +745,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-chu-jian"><span class="nav-number">1.</span> <span class="nav-text">Java初见</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#san-da-ban-ben"><span class="nav-number">1.1.</span> <span class="nav-text">三大版本</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-fang-fa-xiang-jie"><span class="nav-number">1.</span> <span class="nav-text">Java方法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-yao-shi-fang-fa"><span class="nav-number">1.1.</span> <span class="nav-text">什么是方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuo-zhan-zhi-chuan-di-he-yin-yong-chuan-di"><span class="nav-number">1.2.</span> <span class="nav-text">扩展（值传递和引用传递）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fang-fa-de-zhong-zai"><span class="nav-number">1.3.</span> <span class="nav-text">方法的重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ming-ling-xing-chuan-can-liao-jie"><span class="nav-number">1.4.</span> <span class="nav-text">命令行传参（了解）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ke-bian-can-shu"><span class="nav-number">1.5.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#di-gui"><span class="nav-number">1.6.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ji-suan-qi-shi-li"><span class="nav-number">1.7.</span> <span class="nav-text">计算器示例</span></a></li></ol></li></ol></div>
             
 
           </div>
