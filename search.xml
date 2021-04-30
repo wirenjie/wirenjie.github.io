@@ -253,40 +253,19 @@
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2021/04/30/test/test/</url>
-    <content><![CDATA[<h1 id="yi-ji-biao-ti">一级标题</h1>
-<p>test</p>
-<h2 id="er-ji-biao-ti"><a class="header-anchor" href="#二级标题">¶</a>二级标题</h2>
-<p>test</p>
-<h3 id="san-ji"><a class="header-anchor" href="#三级">¶</a>三级</h3>
-<p>test</p>
-<h4 id="si-ji"><a class="header-anchor" href="#四级">¶</a>四级</h4>
-<p>test</p>
-<h1 id="yi-ji-biao-ti-1">一级标题</h1>
-<h2 id="er-ji-biao-ti-1"><a class="header-anchor" href="#二级标题-v2">¶</a>二级标题</h2>
-<p>test</p>
-<h2 id="er-ji-biao-ti-2"><a class="header-anchor" href="#二级标题-v3">¶</a>二级标题</h2>
-<p>test</p>
-<h3 id="san-ji-1"><a class="header-anchor" href="#三级-v2">¶</a>三级</h3>
-<p>test</p>
-<h3 id="san-ji-2"><a class="header-anchor" href="#三级-v3">¶</a>三级</h3>
-<p>test</p>
-<h1 id="yi-ji-biao-ti-2">一级标题</h1>
-<h2 id="er-ji-biao-ti-3"><a class="header-anchor" href="#二级标题-v4">¶</a>二级标题</h2>
-<p>test</p>
-<h2 id="er-ji-biao-ti-4"><a class="header-anchor" href="#二级标题-v5">¶</a>二级标题</h2>
-<p>test</p>
-<h2 id="er-ji-biao-ti-5"><a class="header-anchor" href="#二级标题-v6">¶</a>二级标题</h2>
-<p>test</p>
-<h1 id="yi-ji-biao-ti-3">一级标题</h1>
-<h2 id="er-ji-biao-ti-6"><a class="header-anchor" href="#二级标题-v7">¶</a>二级标题</h2>
-<p>test</p>
-<h2 id="er-ji-biao-ti-7"><a class="header-anchor" href="#二级标题-v8">¶</a>二级标题</h2>
-<p>test</p>
+    <title>java初见</title>
+    <url>/2021/04/30/java/Java%E5%88%9D%E8%A7%81/</url>
+    <content><![CDATA[<h1 id="java-chu-jian">Java初见</h1>
+<h2 id="san-da-ban-ben"><a class="header-anchor" href="#三大版本">¶</a>三大版本</h2>
+<p><strong>JavaSE</strong>，标准版，桌面程序，控制台开始</p>
+<p><strong>javaME</strong>，嵌入式开发，手机，小家电</p>
+<p><strong>javaEE</strong>，E企业级开发，web端，服务器开发</p>
+<p><strong>JDK</strong>，Java Development Kit</p>
+<p><strong>JRE</strong>，Java Runtime Environment</p>
+<p><strong>JVM</strong>，Java Virtual Machine</p>
 ]]></content>
       <tags>
-        <tag>test</tag>
+        <tag>“java”</tag>
       </tags>
   </entry>
 </search>
