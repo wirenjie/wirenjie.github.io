@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>java初见</title>
+    <url>/2021/04/30/java/Java%E5%88%9D%E8%A7%81/</url>
+    <content><![CDATA[<h1 id="java-chu-jian">Java初见</h1>
+<h2 id="san-da-ban-ben"><a class="header-anchor" href="#三大版本">¶</a>三大版本</h2>
+<p><strong>JavaSE</strong>，标准版，桌面程序，控制台开始</p>
+<p><strong>javaME</strong>，嵌入式开发，手机，小家电</p>
+<p><strong>javaEE</strong>，E企业级开发，web端，服务器开发</p>
+<p><strong>JDK</strong>，Java Development Kit</p>
+<p><strong>JRE</strong>，Java Runtime Environment</p>
+<p><strong>JVM</strong>，Java Virtual Machine</p>
+]]></content>
+      <tags>
+        <tag>“java”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java</title>
     <url>/2021/04/30/java/java/</url>
     <content><![CDATA[<h1 id="java-zhi-hello-world">Java之Hello World</h1>
@@ -247,22 +263,6 @@
 <p><em>@throws 异常抛出情况</em></p>
 <p>和注释不一样，能够通过cmd使用javadoc命令生成文档网站</p>
 <p>javadoc -encoding UTF-8 -charset UTF-8 xx.java</p>
-]]></content>
-      <tags>
-        <tag>“java”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java初见</title>
-    <url>/2021/04/30/java/Java%E5%88%9D%E8%A7%81/</url>
-    <content><![CDATA[<h1 id="java-chu-jian">Java初见</h1>
-<h2 id="san-da-ban-ben"><a class="header-anchor" href="#三大版本">¶</a>三大版本</h2>
-<p><strong>JavaSE</strong>，标准版，桌面程序，控制台开始</p>
-<p><strong>javaME</strong>，嵌入式开发，手机，小家电</p>
-<p><strong>javaEE</strong>，E企业级开发，web端，服务器开发</p>
-<p><strong>JDK</strong>，Java Development Kit</p>
-<p><strong>JRE</strong>，Java Runtime Environment</p>
-<p><strong>JVM</strong>，Java Virtual Machine</p>
 ]]></content>
       <tags>
         <tag>“java”</tag>
