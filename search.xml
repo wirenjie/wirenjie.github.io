@@ -1,6 +1,2260 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux之Shell编程</title>
+    <url>/2021/05/06/Linux/Linux%E4%B9%8BShell%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="shell-bian-cheng"><a class="header-anchor" href="#Shell编程">¶</a>Shell编程</h2>
+<h3 id="shell-gai-shu"><a class="header-anchor" href="#Shell概述">¶</a>Shell概述</h3>
+<ul>
+<li>
+<p>命令行解释器</p>
+</li>
+<li>
+<p>为用户提供向Linux内核发送请求来运行程序的界面系统级程序</p>
+</li>
+<li>
+<p>用户可以用Shell启动、挂起、停止甚至编写一些程序</p>
+</li>
+<li>
+<p>还是一个强大的编程语言</p>
+</li>
+<li>
+<p>易编写、易调试</p>
+</li>
+<li>
+<p>也是解释执行的脚本语言</p>
+</li>
+<li>
+<p>Shell中可以直接调用Linux系统命令</p>
+</li>
+<li>
+<p>Shell分类</p>
+<ul>
+<li>
+<p>Bourne Shell，主文件名为sh</p>
+<ul>
+<li>包括sh、ksh、Bash、psh、zsh</li>
+<li>Bash和sh兼容</li>
+<li>目前主流Shell就是Bash</li>
+</ul>
+</li>
+<li>
+<p>C Shell，主要在BSD版的Unix系统中，语法类似C</p>
+<ul>
+<li>包括csh、tcsh</li>
+</ul>
+</li>
+<li>
+<p>两种Shell不兼容</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Linux支持的Shell</p>
+<ul>
+<li>/etc/shells</li>
+</ul>
+</li>
+</ul>
+<h3 id="shell-jiao-ben-zhi-xing-fang-shi"><a class="header-anchor" href="#Shell脚本执行方式">¶</a>Shell脚本执行方式</h3>
+<ul>
+<li>
+<p>echo命令</p>
+<ul>
+<li>
+<p>echo  【选项】【输出内容】</p>
+</li>
+<li>
+<p>-e，支持反斜线控制字符转换</p>
+<ul>
+<li>\输出\本身</li>
+<li>\a，警告音</li>
+<li>\b，退格键，左删除键</li>
+<li>\c，取消输出行末的换行符</li>
+<li>\e，ESCAPE键</li>
+<li>\f，换页符</li>
+<li>\n，换行符</li>
+<li>\r，回车键</li>
+<li>\t，制表符，也就是tab键</li>
+<li>\v，垂直制表符</li>
+<li>\0nnn，八进制ASCII码输出，0为数字，nnn是八进制数</li>
+<li>\xhh，按照十六进制ASCII码输出，hh是两位十六进制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>写脚本</p>
+<ul>
+<li>
+<p>vi  <a href="http://XXX.sh">XXX.sh</a></p>
+</li>
+<li>
+<p>#! /bin/bash</p>
+<ul>
+<li>这不是注释，说明以下是shell脚本</li>
+<li>不写极容易脚本运行出错</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>执行脚本</p>
+<ul>
+<li>
+<p>赋予执行权限，直接运行</p>
+<ul>
+<li>chmod 755 <a href="http://XXX.sh">XXX.sh</a></li>
+<li>./XXX.sh</li>
+</ul>
+</li>
+<li>
+<p>通过Bash调用执行脚本</p>
+<ul>
+<li>bash <a href="http://XXX.sh">XXX.sh</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>dos2unix  <a href="http://XXX.sh">XXX.sh</a></p>
+<ul>
+<li>将脚本文件从Windows格式转换为unix格式</li>
+<li>windows中编辑的脚本回车格式和linux回车不一致</li>
+</ul>
+</li>
+</ul>
+<h3 id="bash-ji-ben-gong-neng"><a class="header-anchor" href="#Bash基本功能">¶</a>Bash基本功能</h3>
+<ul>
+<li>
+<p>历史命令与命令补全</p>
+<ul>
+<li>
+<p>history，查看历史命令</p>
+<ul>
+<li>
+<p>-c，清空历史命令，谨慎使用</p>
+</li>
+<li>
+<p>-w，历史命令写入保存文件~/.bash_history</p>
+</li>
+<li>
+<p>历史命令默认保存1000条</p>
+</li>
+<li>
+<p>环境变量文件/etc/profile中可修改</p>
+</li>
+<li>
+<p>调用</p>
+<ul>
+<li>!n，重复执行第n条命令</li>
+<li>!!，重复执行上一条命令</li>
+<li>!字串，重复执行最后一条以该字串开头的命令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Tab键可以补全命令、文件或目录</p>
+</li>
+<li>
+<p>按两次Tab键给出所有选择浏览</p>
+</li>
+</ul>
+</li>
+<li>
+<p>命令别名和常用快捷键</p>
+<ul>
+<li>
+<p>命令别名</p>
+<ul>
+<li>alias  别名 = ‘原命令’</li>
+<li>alias，查询命令别名</li>
+<li>重启系统别名就会消失</li>
+<li>让别名永久生效 vi /root/.bashrc</li>
+<li>删除别名 unalias 别名</li>
+</ul>
+</li>
+<li>
+<p>命令执行时顺序</p>
+<ul>
+<li>第一顺位执行用绝对/相对路径执行的命令</li>
+<li>第二顺位执行别名</li>
+<li>第三顺位执行Bash的内部命令</li>
+<li>第四顺位执行按照$PATH环境变量定义的目录查找顺序找到的第一个命令</li>
+</ul>
+</li>
+<li>
+<p>Bash常用快捷键</p>
+<ul>
+<li>ctrl+a，光标移动到命令开头</li>
+<li>ctrl+e，光标移动到命令末尾</li>
+<li>（常用）ctrl+c，强制终止当前命令</li>
+<li>（常用）ctrl+l，清屏</li>
+<li>（常用）ctrl+u，删除或剪切光标之前的命令</li>
+<li>ctrl+k，删除或剪切光标之后的命令</li>
+<li>（常用）ctrl+y，粘贴剪切的内容</li>
+<li>（常用）ctrl+r，在历史命令中搜索</li>
+<li>（常用）ctrl+d，退出当前终端</li>
+<li>ctrl+z，暂停，并放入后台</li>
+<li>ctrl+s，暂停屏幕输出</li>
+<li>ctrl+q，回复屏幕输出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>输入输出重定向</p>
+<ul>
+<li>
+<p>标准输入输出</p>
+<ul>
+<li>
+<p>键盘</p>
+<ul>
+<li>设备文件名/dev/stdin</li>
+<li>文件描述符0</li>
+<li>类型为标准输入</li>
+</ul>
+</li>
+<li>
+<p>显示器</p>
+<ul>
+<li>
+<p>/dev/stdout</p>
+<ul>
+<li>文件描述符为1</li>
+<li>标准输出</li>
+</ul>
+</li>
+<li>
+<p>/dev/stderr</p>
+<ul>
+<li>文件描述符为2</li>
+<li>标准错误输出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>输出重定向</p>
+<ul>
+<li>
+<p>作用：把命令执行结果保存下来</p>
+</li>
+<li>
+<p>标准输出重定向</p>
+<ul>
+<li>
+<p>命令 &gt;  文件</p>
+<ul>
+<li>以覆盖的方式</li>
+<li>命令的输出输出到指定文件或设备中</li>
+</ul>
+</li>
+<li>
+<p>命令 &gt;&gt;  文件</p>
+<ul>
+<li>以追加的方式</li>
+<li>输出到指定文件或设备中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>标准错误输出重定向</p>
+<ul>
+<li>
+<p>错误命令  2&gt; 文件</p>
+<ul>
+<li>以覆盖的方式</li>
+<li>把命令错误输出到指定文件或设备中</li>
+</ul>
+</li>
+<li>
+<p>错误命令  2&gt;&gt;  文件</p>
+<ul>
+<li>以追加方式</li>
+<li>把命令错误输出到指定文件或设备中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>正确和错误输出同时保存</p>
+<ul>
+<li>
+<p>命令 &gt;  文件 2&gt;&amp;1</p>
+<ul>
+<li>以覆盖的方式</li>
+<li>正确和错误输出保存到同一个文件中</li>
+</ul>
+</li>
+<li>
+<p>命令 &gt;&gt;  文件  2&gt;&amp;1</p>
+<ul>
+<li>以追加的方式</li>
+<li>正确和错误输出保存到同一个文件中</li>
+</ul>
+</li>
+<li>
+<p>命令  &amp;&gt;  文件</p>
+<ul>
+<li>以覆盖的方式</li>
+<li>正确和错误输出都保存到同一个文件中</li>
+</ul>
+</li>
+<li>
+<p>命令  &amp;&gt;&gt; 文件</p>
+<ul>
+<li>以追加的方式</li>
+<li>正确和错误输出都保存到同一个文件中</li>
+</ul>
+</li>
+<li>
+<p>命令  &gt;&gt;  文件1   2&gt;&gt; 文件2</p>
+<ul>
+<li>正确的输出追加到文件1中</li>
+<li>错误的输出追加到文件2中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>命令  &amp;&gt; /dev/null，不保存任何结果，只执行</p>
+</li>
+</ul>
+</li>
+<li>
+<p>输入重定向</p>
+<ul>
+<li>
+<p>wc  【选项】 【文件名】</p>
+<ul>
+<li>-c，统计字节数</li>
+<li>-w，统计单词数</li>
+<li>-l，统计行数</li>
+<li>ctrl+d，结束</li>
+</ul>
+</li>
+<li>
+<p>命令 &lt;  文件，把文件作为命令输入</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>多命令顺序执行与管道符</p>
+<ul>
+<li>
+<p>多命令顺序执行</p>
+<ul>
+<li>
+<p>分号；，多个命令按顺序执行</p>
+<ul>
+<li>中间命令错误也会继续执行</li>
+</ul>
+</li>
+<li>
+<p>&amp;&amp;，逻辑与</p>
+<ul>
+<li>命令1正确执行后命令2才执行</li>
+</ul>
+</li>
+<li>
+<p>||，逻辑或</p>
+<ul>
+<li>命令1正确执行后命令2不会执行</li>
+<li>命令1不正确执行，命令2才执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>管道符  |</p>
+<ul>
+<li>命令1   |   命令2</li>
+<li>命令1的正确输出作为命令2的操作对象</li>
+</ul>
+</li>
+<li>
+<p>grep 【选项】 【文件或内容】</p>
+<ul>
+<li>-i，忽略大小写</li>
+<li>-n，输出行号</li>
+<li>-v，反向查找</li>
+<li>–color=auto，搜索出的关键字用颜色显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>通配符与其他特殊符号</p>
+<ul>
+<li>
+<p>通配符</p>
+<ul>
+<li>
+<p>？，匹配一个任意字符</p>
+</li>
+<li>
+<p>*，匹配0个或多个任意字符</p>
+</li>
+<li>
+<p>【】，匹配中括号中任意一个字符</p>
+<ul>
+<li>【abc】，代表一定匹配一个字符</li>
+</ul>
+</li>
+<li>
+<p>【-】，匹配中括号中任意一个字符，例【a-z】</p>
+</li>
+<li>
+<p>【^】，逻辑非，表示匹配不是中括号内的一个字符</p>
+</li>
+</ul>
+</li>
+<li>
+<p>其他特殊符号</p>
+<ul>
+<li>‘  ’，单引号，无特殊含义</li>
+<li>“  ”，除$、`和\以外无特殊含义</li>
+<li><code>  </code>，反引号，系统命令，Bash会先执行</li>
+<li>$()，和反引号意义一致，建议使用，反引号容易看错</li>
+<li>#，shell脚本中，写在开头的表示注释</li>
+<li>$，调用变量的值</li>
+<li>\，转义符，跟在\后面的特殊符号会变成普通字符</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="bash-bian-liang"><a class="header-anchor" href="#Bash变量">¶</a>Bash变量</h3>
+<ul>
+<li>
+<p>变量概述</p>
+<ul>
+<li>计算机内存的单元</li>
+<li>其中存放的值可以改变，可以是数字、字母等</li>
+<li>用于保存暂时信息</li>
+</ul>
+</li>
+<li>
+<p>规则</p>
+<ul>
+<li>可以由字母、数字和下划线组成</li>
+<li>不能以数字开头</li>
+<li>Bash中默认类型为字符串型</li>
+<li>变量和值用等号连接，含空格需要单引号括起来</li>
+<li>值可以使用\转义符</li>
+<li>如果需要增加变量的值，变量需要用双引号包含“$变量名”或者${变量名}包含</li>
+<li>若命令的结果作为值赋予变量，需用反引号或$()包含命令</li>
+<li>环境变量名建议大写，便于区分</li>
+</ul>
+</li>
+<li>
+<p>分类</p>
+<ul>
+<li>
+<p>用户自定义变量（本地变量）</p>
+<ul>
+<li>
+<p>只在当前的Shell中生效</p>
+</li>
+<li>
+<p>变量定义</p>
+<ul>
+<li>a = 123</li>
+</ul>
+</li>
+<li>
+<p>变量叠加</p>
+<ul>
+<li>a = &quot;$a&quot;456</li>
+<li>a = ${a}789</li>
+</ul>
+</li>
+<li>
+<p>变量调用</p>
+<ul>
+<li>echo $a</li>
+</ul>
+</li>
+<li>
+<p>变量查看</p>
+<ul>
+<li>set</li>
+</ul>
+</li>
+<li>
+<p>变量删除</p>
+<ul>
+<li>unset  a</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>环境变量</p>
+<ul>
+<li>
+<p>概述</p>
+<ul>
+<li>主要保存系统操作环境相关的数据</li>
+<li>在当前Shell和所有子Shell当中生效</li>
+<li>若写入相应配置文件，环境变量就会在所有Shell中生效</li>
+<li>pstree命令可以查询当前是否存在子shell</li>
+</ul>
+</li>
+<li>
+<p>设置</p>
+<ul>
+<li>export  变量名 = 变量值，#申明变量</li>
+<li>env，#查询环境变量</li>
+<li>unset 变量名，#删除变量</li>
+</ul>
+</li>
+<li>
+<p>常见环境变量</p>
+<ul>
+<li>
+<p>PATH</p>
+<ul>
+<li>系统查找命令的路径的变量</li>
+<li>echo  $PATH可以查看</li>
+<li>PATH = “$PATH” : /root/sh，叠加（临时）</li>
+</ul>
+</li>
+<li>
+<p>PS1</p>
+<ul>
+<li>
+<p>定义系统提示符的变量[root@localhost ~]#</p>
+</li>
+<li>
+<p>env无法查询，set可以查</p>
+</li>
+<li>
+<p>详情</p>
+<ul>
+<li>\d，显示日期，格式为“星期  月  日”</li>
+<li>\h，简写主机名</li>
+<li>\t，显示24时制时间，HH:MM:SS</li>
+<li>\T，显示12时制时间，格式同\t</li>
+<li>\A，显示24时制时间，格式为HH:MM</li>
+<li>\u，显示当前用户名</li>
+<li>\w，显示当前所在目录的完整名称</li>
+<li>\W，显示当前所在目录的最后一个目录</li>
+<li>#，执行的第几个命令</li>
+<li>$，提示符，root用户为#，普通用户$</li>
+</ul>
+</li>
+<li>
+<p>举例</p>
+<ul>
+<li>PS1 = ‘[\u@\t \w]$ ’</li>
+<li>PS1 = '[\u@@ \h # \W]$ ’</li>
+<li>PS1 = '[\u@\h  \W]$ ’</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>位置参数变量</p>
+<ul>
+<li>
+<p>主要向脚本当中传递参数或数据，变量名和作用是固定的</p>
+</li>
+<li>
+<p>主要参数</p>
+<ul>
+<li>
+<p>$n</p>
+<ul>
+<li>n为数字，$0代表命令本身</li>
+<li>$1-$9代表1-9个参数，空格区分</li>
+<li>10以上需用{}，${10}</li>
+</ul>
+</li>
+<li>
+<p>$*</p>
+<ul>
+<li>代表命令行中所有的参数</li>
+<li>把所有参数看为一个整体</li>
+</ul>
+</li>
+<li>
+<p>$@</p>
+<ul>
+<li>也代表命令行中所有的参数</li>
+<li>但是把每个参数区分对待</li>
+</ul>
+</li>
+<li>
+<p>$#</p>
+<ul>
+<li>这个变量代表命令行中所有参数的个数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>预定义变量</p>
+<ul>
+<li>
+<p>Bash中已经定义好的变量，变量名和作用是固定的</p>
+</li>
+<li>
+<p>主要参数</p>
+<ul>
+<li>
+<p>$?</p>
+<ul>
+<li>最后一次执行命令的返回状态</li>
+<li>为0表示上一个命令正确执行</li>
+<li>非0，值由命令决定，表示命令执行错误</li>
+</ul>
+</li>
+<li>
+<p>$$</p>
+<ul>
+<li>当前进程的进程号（PID）</li>
+</ul>
+</li>
+<li>
+<p>$!</p>
+<ul>
+<li>后台运行的最后一个进程的进程号</li>
+</ul>
+</li>
+<li>
+<p>补充</p>
+<ul>
+<li>
+<p>find  /root  -name  <a href="http://xxx.sh">xxx.sh</a>  &amp;</p>
+<ul>
+<li>使用find命令查找xxx.sh文件并放入后台执行</li>
+<li>&amp;符号则为放入后台执行</li>
+</ul>
+</li>
+<li>
+<p>read [选项] [变量名]</p>
+<ul>
+<li>键盘输入</li>
+<li>-p “提示信息”，等待输入时显示</li>
+<li>-t 秒数，指定等待输入时间</li>
+<li>-n 字符数，只接受指定的字符数，才会执行</li>
+<li>-s，隐藏输入的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="bash-yun-suan-fu"><a class="header-anchor" href="#Bash运算符">¶</a>Bash运算符</h3>
+<ul>
+<li>
+<p>数值运算与运算符</p>
+<ul>
+<li>
+<p>数值运算</p>
+<ul>
+<li>
+<p>方法1</p>
+<ul>
+<li>
+<p>declare  +/-[选项]  变量名</p>
+<ul>
+<li>声明变量类型</li>
+<li>-，给变量设定类型属性</li>
+<li>+，取消变量的类型属性</li>
+<li>-i，将变量声明为整数型</li>
+<li>-x，将变量声明为环境变量</li>
+<li>-p，显示指定变量的声明类型</li>
+</ul>
+</li>
+<li>
+<p>例</p>
+<ul>
+<li>aa = 11</li>
+<li>bb = 22</li>
+<li>declare -i cc  = $aa + $bb</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>方法2</p>
+<ul>
+<li>
+<p>expr或let工具</p>
+<ul>
+<li>aa = 11</li>
+<li>bb = 22</li>
+<li>cc = $(expr $aa + $bb)</li>
+<li>注:+号两侧必须有空格</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>方法3</p>
+<ul>
+<li>
+<p>$((运算式))或$[运算式]</p>
+<ul>
+<li>cc=$(($aa + $bb))</li>
+<li>dd=$[aa + $bb]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>运算符</p>
+<ul>
+<li>优先级越大越优先</li>
+<li>优先级13  [+，- ]取正、负</li>
+<li>优先级12，[!  ,  ~]，逻辑非、按位补码</li>
+<li>优先级11，[* ，/，%]，乘除，取模</li>
+<li>优先级10，[+ , -]，加减</li>
+<li>优先级9，[&lt;&lt; , &gt;&gt;]，按位左移，按位右移</li>
+<li>优先级8，[&lt;= , &gt;= , &lt; , &gt;]，大于小于，大于等于</li>
+<li>优先级7，[== ， != ]，等于，不等于</li>
+<li>优先级6，&amp; 按位与</li>
+<li>优先级5，^ 按位异或</li>
+<li>优先级4，|  按位或</li>
+<li>优先级3，&amp;&amp;逻辑与</li>
+<li>优先级2，||逻辑或</li>
+<li>优先级1，[=，+=，-=， &lt;&lt;= 等]，赋值，运算赋值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>变量测试与内容替换</p>
+<ul>
+<li>
+<p>x = ${y - 新值}</p>
+<ul>
+<li>y没设置，则x=新值</li>
+<li>y为空，则x为空</li>
+<li>y有值，则x=$y</li>
+</ul>
+</li>
+<li>
+<p>x = ${y : 新值}</p>
+<ul>
+<li>y没设置，则x=新值</li>
+<li>y为空，则x=新值</li>
+<li>y有值，则x=$y</li>
+</ul>
+</li>
+<li>
+<p>x = ${y + 新值}</p>
+<ul>
+<li>y没设置，则x为空</li>
+<li>y为空，则x=新值</li>
+<li>y有值，则x=新值</li>
+</ul>
+</li>
+<li>
+<p>x = ${y :+ 新值}</p>
+<ul>
+<li>y没设置，则x为空</li>
+<li>y为空，则x为空</li>
+<li>y有值，则x=新值</li>
+</ul>
+</li>
+<li>
+<p>x = ${y = 新值}</p>
+<ul>
+<li>y没设置，则x=新值，y=新值</li>
+<li>y为空，则x为空，y不变</li>
+<li>y有值，则x=$y，y不变</li>
+</ul>
+</li>
+<li>
+<p>x = ${y := 新值}</p>
+<ul>
+<li>y没设置，则x=新值，y=新值</li>
+<li>y为空，则x=新值，y=新值</li>
+<li>y有值，则x=$y，y不变</li>
+</ul>
+</li>
+<li>
+<p>x = ${y ? 新值}</p>
+<ul>
+<li>y没设置，则新值输出到标准错误输出（屏幕）</li>
+<li>y为空，则x为空</li>
+<li>y有值，则x=$y</li>
+</ul>
+</li>
+<li>
+<p>x = ${y :? 新值}</p>
+<ul>
+<li>y没设置，则新值输出到标准错误输出</li>
+<li>y为空，则新值输出到标准错误输出</li>
+<li>y有值，则x=$y</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="huan-jing-bian-liang-pei-zhi-wen-jian"><a class="header-anchor" href="#环境变量配置文件">¶</a>环境变量配置文件</h3>
+<ul>
+<li>
+<p>简介</p>
+<ul>
+<li>
+<p>source 配置文件或 . 配置文件(有空格)</p>
+<ul>
+<li>强制生效配置文件</li>
+</ul>
+</li>
+<li>
+<p>主要是对系统操作环境生效的系统默认环境变量</p>
+<ul>
+<li>PATH</li>
+<li>HISTSIZE</li>
+<li>PS1</li>
+<li>HOSTNAME</li>
+</ul>
+</li>
+<li>
+<p>环境配置文件</p>
+<ul>
+<li>
+<p>1、/etc/profile</p>
+</li>
+<li>
+<p>2、~/.bash_profile，只对当前用户生效</p>
+</li>
+<li>
+<p>3、~/.bashrc，只对当前用户生效</p>
+</li>
+<li>
+<p>4、/etc/bashrc</p>
+</li>
+<li>
+<p>5、/etc/profile.d/*.sh</p>
+</li>
+<li>
+<p>读取顺序</p>
+<ul>
+<li>1234，然后读取命令提示符</li>
+<li>12345，然后读取具体脚本</li>
+<li>15，<a href="http://xn--lang-zc1gqlr55op05b.sh">然后读取lang.sh</a>，再读取/etc/sysconfig/i18n</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>作用</p>
+<ul>
+<li>
+<p>/etc/profile</p>
+<ul>
+<li>USER、LOGNAME、MAIL</li>
+<li>PATH、HOSTNAME、HISTNAME</li>
+<li>umask</li>
+<li>调用/etc/profile.d/*.sh文件</li>
+</ul>
+</li>
+<li>
+<p>~/.bash_profile</p>
+<ul>
+<li>调用~/.bashrc文件</li>
+<li>再PATH值后面加入家目录下的/bin这个目录</li>
+</ul>
+</li>
+<li>
+<p>~/.bashrc</p>
+<ul>
+<li>系统别名定义</li>
+<li>只针对当前用户</li>
+</ul>
+</li>
+<li>
+<p>/etc/bashrc</p>
+<ul>
+<li>PS1变量、PATH变量</li>
+<li>umask</li>
+<li>调用/etc/profile.d/*.sh文件</li>
+<li>以上定义和调用针对不输入密码登录的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>其他配置文件和登录信息</p>
+<ul>
+<li>
+<p>注销时生效，~/.bash_logout</p>
+</li>
+<li>
+<p>历史命令，~/bash_history</p>
+</li>
+<li>
+<p>Shell本地登录信息，/etc/issue</p>
+<ul>
+<li>\d，系统日期</li>
+<li>\s，显示操作系统名称</li>
+<li>\l，显示登录终端号</li>
+<li>\m，显示硬件体系结构</li>
+<li>\n，显示主机名</li>
+<li>\o，显示域名</li>
+<li>\r，显示内核版本</li>
+<li>\t，显示当前系统时间</li>
+<li>\u，显示当前登录用户序列号</li>
+</ul>
+</li>
+<li>
+<p>远程终端登录信息，/etc/issue.net</p>
+<ul>
+<li>issue转义符不支持，只支持纯文本</li>
+<li>是否显示由/etc/ssh/sshd_config决定</li>
+<li>加入“Banner /etc/issue.net”行重启ssh服务才行</li>
+</ul>
+</li>
+<li>
+<p>登录欢迎信息，/etc/motd</p>
+<ul>
+<li>本地、远程登录都可以</li>
+<li>但是需要登录完成后才显示</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="zheng-ze-biao-da-shi"><a class="header-anchor" href="#正则表达式">¶</a>正则表达式</h3>
+<ul>
+<li>
+<p>概念和比较</p>
+<ul>
+<li>用来在文件中匹配符合条件的字符串</li>
+<li>正则是包含匹配</li>
+<li>grep、awk、sed等命令可以支持</li>
+<li>通配符用来匹配符合条件的文件名，完全匹配</li>
+<li>ls、find、cp等命令不支持</li>
+</ul>
+</li>
+<li>
+<p>基础元字符</p>
+<ul>
+<li>
+<p>*，前一个字符匹配0或任意多次</p>
+<ul>
+<li>grep “aa*”  test.txt，匹配至少有一个a的行</li>
+<li>grep “a*” test.txt，匹配所有行，包括空白行</li>
+</ul>
+</li>
+<li>
+<p>.  ，匹配除了换行符外任意一个字符</p>
+</li>
+<li>
+<p><sup>，匹配行首，</sup>a就会匹配以a开头的行</p>
+</li>
+<li>
+<p>$，匹配行尾，a$</p>
+</li>
+<li>
+<p>[]，匹配括号中任意一个字符，只匹配一个</p>
+</li>
+<li>
+<p>[^]，匹配除括号中字符外任意一个字符</p>
+<ul>
+<li><sup>[</sup>a-z]，匹配不用小写字母开头的行</li>
+<li><sup>[</sup>a-zA-Z]，匹配不用字母开头的行</li>
+</ul>
+</li>
+<li>
+<p>\，转义符</p>
+</li>
+<li>
+<p>\ {n}，表示其前面字符恰好出现n次</p>
+<ul>
+<li>[0-9]{4}，匹配4位数字</li>
+<li>[1][3-8][0-9]{9}，匹配手机号</li>
+</ul>
+</li>
+<li>
+<p>\ {n , }，表示其前面字符出现不小于n次</p>
+<ul>
+<li>[0-9]{2,}，表示两位及以上的数字</li>
+</ul>
+</li>
+<li>
+<p>\ {n, m}，表示其前面字符至少出现n次，最多m次</p>
+<ul>
+<li>[a-z]{6,8}，匹配6到8位的小写字母</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="zi-fu-jie-qu"><a class="header-anchor" href="#字符截取">¶</a>字符截取</h3>
+<ul>
+<li>
+<p>cut</p>
+<ul>
+<li>
+<p>cut [选项]  文件名</p>
+<ul>
+<li>-f  列号，提取第几列</li>
+<li>-d  分隔符，指定分隔符分割列</li>
+<li>cut -d “:” -f 1, 3 /etc/passwd，以:为间隔提取第1，3列</li>
+<li>不支持空格作为分隔符，不具体，分隔符必须具体</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>printf</p>
+<ul>
+<li>
+<p>printf  ’输出类型  输出格式‘  输出内容</p>
+<ul>
+<li>
+<p>输出类型</p>
+<ul>
+<li>%ns，输出字符串，n指几个字符</li>
+<li>%ni，输出整数，n指几个数字</li>
+<li>%<a href="http://m.nf">m.nf</a>，输出浮点数，分别指整数位数和小数位数，%8.2f，指8位数，2位小数，6位整数</li>
+</ul>
+</li>
+<li>
+<p>输出格式</p>
+<ul>
+<li>\a，输出警告声音</li>
+<li>\b，输出退格键</li>
+<li>\f，清除屏幕</li>
+<li>\n，换行</li>
+<li>\r，回车</li>
+<li>\t，水平输出退格键（TAB）</li>
+<li>\v，垂直输出退格键（TAB）</li>
+</ul>
+</li>
+<li>
+<p>printf后不能直接跟文件，或通过管道符跟文件</p>
+</li>
+<li>
+<p>只能printf  ’%s‘ $(cat 123.txt)，这样输入</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>awk</p>
+<ul>
+<li>
+<p>输出中支持print和printf</p>
+<ul>
+<li>printf不会自动换行，print会，但Linux不含print</li>
+</ul>
+</li>
+<li>
+<p>awk ’条件1 {动作1} 条件2{动作2}…’ 文件名</p>
+<ul>
+<li>
+<p>条件</p>
+<ul>
+<li>一般使用关系表达式作为条件</li>
+<li>x&gt;10,x&lt;=10等</li>
+</ul>
+</li>
+<li>
+<p>动作</p>
+<ul>
+<li>格式化输出</li>
+<li>流程控制语句</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>sed</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux之Vim</title>
+    <url>/2021/05/06/Linux/Linux%E4%B9%8BVim/</url>
+    <content><![CDATA[<h1 id="linux-zhi-vim-bian-ji-qi">Linux之Vim编辑器</h1>
+<h3 id="ji-ben-gai-nian"><a class="header-anchor" href="#基本概念">¶</a>基本概念</h3>
+<ul>
+<li>
+<p>全屏幕文本编辑器，作用是建立、编辑、显示文本文件</p>
+</li>
+<li>
+<p>Vim没有菜单，只有命令</p>
+</li>
+<li>
+<p>模式</p>
+<ul>
+<li>命令模式，vim进入默认状态</li>
+<li>插入模式，命令模式下按i，a，o进入</li>
+<li>编辑模式，命令模式下用：进入</li>
+</ul>
+</li>
+</ul>
+<h3 id="chang-yong-cao-zuo"><a class="header-anchor" href="#常用操作">¶</a>常用操作</h3>
+<ul>
+<li>
+<p>插入模式命令</p>
+<ul>
+<li>a，光标所在字符后插入</li>
+<li>A，光标所在行尾插入</li>
+<li>i，光标所在字符前插入</li>
+<li>I，光标所在行首插入</li>
+<li>o，光标下插入新行</li>
+<li>O，光标上插入新行</li>
+</ul>
+</li>
+<li>
+<p>定位命令</p>
+<ul>
+<li>：set nu，设置行号</li>
+<li>：set nonu，取消行号</li>
+<li>gg到第一行，G到最后一行</li>
+<li>nG，到第n行</li>
+<li>：n，到第n行</li>
+<li>$，移至行尾</li>
+<li>0，移至行首</li>
+</ul>
+</li>
+<li>
+<p>删除命令</p>
+<ul>
+<li>x，删除光标所在字符</li>
+<li>nx，删除光标所在处后n个字符</li>
+<li>dd，删除光标所在行，ndd，删除n行</li>
+<li>dG，删除光标所在行到文件末尾内容</li>
+<li>D删除光标所在处到行尾内容</li>
+<li>：n1，n2d，删除指定范围的行</li>
+</ul>
+</li>
+<li>
+<p>复制、剪切命令</p>
+<ul>
+<li>yy，复制当前行</li>
+<li>nyy，复制当前行以下n行</li>
+<li>dd，剪切当前行</li>
+<li>ndd，剪切当前行以下n行</li>
+<li>p，P，粘贴在当前光标所在行下或行上</li>
+</ul>
+</li>
+<li>
+<p>替换、取消命令</p>
+<ul>
+<li>r，取代光标所在处字符</li>
+<li>R，从光标处开始替换字符，按Esc结束</li>
+<li>u，取消上一步操作</li>
+</ul>
+</li>
+<li>
+<p>搜索、搜索替换命令</p>
+<ul>
+<li>
+<p>/XXX，搜索指定字符，搜索忽略大小写：set ic</p>
+</li>
+<li>
+<p>n，搜索指定字符串的下一个出现位置</p>
+</li>
+<li>
+<p>：%s/old/new/g，全文替换指定字符串</p>
+</li>
+<li>
+<p>n1，n2s/old/new/g，在一定范围内替换指定字符串</p>
+</li>
+<li>
+<p>注意</p>
+<ul>
+<li>s代表指定行，不指定代表所有行</li>
+<li>/g代表不询问，/c表示询问</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>保存、退出命令</p>
+<ul>
+<li>：w，保存修改</li>
+<li>：w 【文件名】，另存为指定文件</li>
+<li>：wq，保存并退出</li>
+<li>ZZ，保存修改并退出</li>
+<li>：q！，不保存修改退出</li>
+<li>：wq！，保存修改并退出（所有者和root用户可使用）</li>
+</ul>
+</li>
+</ul>
+<h3 id="shi-yong-ji-qiao"><a class="header-anchor" href="#使用技巧">¶</a>使用技巧</h3>
+<ul>
+<li>
+<p>：r  【文件名】，导入文件内容 到光标处</p>
+</li>
+<li>
+<p>：！命令，执行对应命令</p>
+</li>
+<li>
+<p>：r ！命令，导入命令执行结果</p>
+</li>
+<li>
+<p>map 快捷键  触发命令，定义快捷键</p>
+<ul>
+<li>快捷键需要Ctrl+v+对应键定义</li>
+<li>触发命令：I#<ESC>，注释行</ESC></li>
+</ul>
+</li>
+<li>
+<p>：n1，n2s/^/#/g，连续行注释</p>
+<ul>
+<li>^代表匹配开头</li>
+<li>不写^中间的#也会被注释</li>
+</ul>
+</li>
+<li>
+<p>：ab  old   new，替换</p>
+<ul>
+<li>ab为固定格式</li>
+<li>old和new为指定字符串</li>
+<li>当你在文件里输入old字符串回车或空格后即会替换</li>
+</ul>
+</li>
+<li>
+<p>若需要快捷操作永久生效，需要到用户家目录下的.vimrc文件下进行输入和保存，不需要写冒号</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux进阶命令</title>
+    <url>/2021/05/06/Linux/Linux%E8%BF%9B%E9%98%B6%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="linux-jin-jie-ming-ling">Linux进阶命令</h1>
+<h2 id="guan-ji-zhong-qi-ming-ling"><a class="header-anchor" href="#关机重启命令">¶</a>关机重启命令</h2>
+<h3 id="shutdown"><a class="header-anchor" href="#shutdown">¶</a>shutdown</h3>
+<ul>
+<li>
+<p>语法：shutdown 【选项】 时间</p>
+</li>
+<li>
+<p>如：shutdown -h 【（now）/（20：30）】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-c，取消设置的定时关机</li>
+<li>-h，关机</li>
+<li>-r，重启</li>
+</ul>
+</li>
+</ul>
+<h3 id="qi-ta-guan-ji-ming-ling"><a class="header-anchor" href="#其他关机命令">¶</a>其他关机命令</h3>
+<ul>
+<li>halt</li>
+<li>poweroff</li>
+<li>init 0</li>
+</ul>
+<h3 id="qi-ta-zhong-qi-ming-ling"><a class="header-anchor" href="#其他重启命令">¶</a>其他重启命令</h3>
+<ul>
+<li>reboot</li>
+<li>init 6</li>
+</ul>
+<h3 id="bu-chong-xi-tong-yun-xing-ji-bie-init-ming-ling-diao-yong"><a class="header-anchor" href="#补充：系统运行级别，init命令调用">¶</a>补充：系统运行级别，init命令调用</h3>
+<ul>
+<li>0，关机</li>
+<li>1，单用户（启用最小服务）</li>
+<li>2，不完全多用户，不含NFS服务</li>
+<li>3，完全多用户</li>
+<li>4，未分配</li>
+<li>5，图形界面</li>
+<li>6，重启</li>
+<li>cat /etc/inittab可以查看</li>
+<li>runlevel命令也可查看当前及上一次运行级别</li>
+</ul>
+<h3 id="logout"><a class="header-anchor" href="#logout">¶</a>logout</h3>
+<ul>
+<li>退出登录</li>
+</ul>
+<h2 id="wang-luo-ming-ling"><a class="header-anchor" href="#网络命令">¶</a>网络命令</h2>
+<h3 id="write"><a class="header-anchor" href="#write">¶</a>write</h3>
+<ul>
+<li>所在路径/usr/bin/write</li>
+<li>执行权限：所有用户</li>
+<li>功能：给用户发信息，以Ctrl+D保存结束</li>
+<li>语法：write 【用户名】</li>
+<li>注：只能是在线用户间发送</li>
+</ul>
+<h3 id="wall"><a class="header-anchor" href="#wall">¶</a>wall</h3>
+<ul>
+<li>原意write all，所在路径/usr/bin/wall</li>
+<li>执行权限：所有用户</li>
+<li>功能：给所有用户发广播信息</li>
+<li>语法：wall 【信息】</li>
+<li>注：所有在线用户都能收到，包括本机用户</li>
+</ul>
+<h3 id="ping"><a class="header-anchor" href="#ping">¶</a>ping</h3>
+<ul>
+<li>所在路径/bin/ping</li>
+<li>执行权限：所有用户</li>
+<li>功能：测试网络连通性</li>
+<li>语法：ping 【IP地址】</li>
+<li>-c，指定发送次数</li>
+</ul>
+<h3 id="ifconfig"><a class="header-anchor" href="#ifconfig">¶</a>ifconfig</h3>
+<ul>
+<li>原意interface configure</li>
+<li>所在路径/sbin/ifconfig</li>
+<li>执行权限：root用户</li>
+<li>功能：查看和设置网卡信息</li>
+<li>语法：ifconfig 【网卡名称】 【IP地址】</li>
+<li>注：此命令是临时设置的网络地址</li>
+</ul>
+<h3 id="mail"><a class="header-anchor" href="#mail">¶</a>mail</h3>
+<ul>
+<li>
+<p>所在路径/bin/mail</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：查看发送电子邮件</p>
+</li>
+<li>
+<p>语法：mail 【用户名】</p>
+</li>
+<li>
+<p>Ctrl+D键结束内容发送</p>
+</li>
+<li>
+<p>操作</p>
+<ul>
+<li>mail界面下，help可以查看帮助信息</li>
+<li>输入邮件序号可以查看邮件</li>
+<li>h键查看列表，d+序号删除，q键退出</li>
+</ul>
+</li>
+</ul>
+<h3 id="last"><a class="header-anchor" href="#last">¶</a>last</h3>
+<ul>
+<li>所在路径/usr/bin/last</li>
+<li>执行权限：所有用户</li>
+<li>功能：列出过去登录系统的用户信息</li>
+<li>语法：last</li>
+<li>注：lastlog命令可以看所有用户最后登录时间</li>
+</ul>
+<h3 id="traceroute"><a class="header-anchor" href="#traceroute">¶</a>traceroute</h3>
+<ul>
+<li>所在路径/bin/traceroute</li>
+<li>执行权限：所有用户</li>
+<li>功能：显示数据包到主机间的路径</li>
+<li>语法：traceroute  【IP地址】</li>
+</ul>
+<h3 id="netstat"><a class="header-anchor" href="#netstat">¶</a>netstat</h3>
+<ul>
+<li>
+<p>所在路径/bin/netstat</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：显示网络相关信息</p>
+</li>
+<li>
+<p>语法：netstat 【选项】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-t，TCP协议</li>
+<li>-u，UDP协议</li>
+<li>-l，监听</li>
+<li>-r，路由</li>
+<li>-n，显示IP地址和端口</li>
+<li>-a，查看所有</li>
+</ul>
+</li>
+<li>
+<p>常见用法</p>
+<ul>
+<li>netstat -tlun，查看本机监听端口</li>
+<li>netstat -an，查看本机所有网络连接</li>
+<li>netstat -rn，查看本机路由表</li>
+</ul>
+</li>
+</ul>
+<h3 id="setup"><a class="header-anchor" href="#setup">¶</a>setup</h3>
+<ul>
+<li>
+<p>所在路径/usr/bin/setup</p>
+</li>
+<li>
+<p>执行权限：root用户</p>
+</li>
+<li>
+<p>功能：配置网络</p>
+</li>
+<li>
+<p>语法：setup</p>
+</li>
+<li>
+<p>注意</p>
+<ul>
+<li>只有redhat系统存在的命令</li>
+<li>配置完后需要service network restart</li>
+<li>此命令永久生效</li>
+</ul>
+</li>
+</ul>
+<h3 id="mount"><a class="header-anchor" href="#mount">¶</a>mount</h3>
+<ul>
+<li>
+<p>所在路径/bin/mount</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：挂载命令</p>
+</li>
+<li>
+<p>语法：mount 【-t 文件系统】【设备文件名】【挂载点】</p>
+</li>
+<li>
+<p>mount -t   iso9660   /dev/sr0(或/dev/cdrom)   /mnt/cdrom</p>
+</li>
+<li>
+<p>注意：</p>
+<ul>
+<li>umount /dev/sr0，取消挂载</li>
+<li>-t iso9660可以省略</li>
+<li>sr0和cdrom是一个文件，都是默认好的，不需要修改</li>
+<li>取消挂载不能在挂载目录下进行</li>
+</ul>
+</li>
+</ul>
+<h2 id="ya-suo-jie-ya-ming-ling"><a class="header-anchor" href="#压缩解压命令">¶</a>压缩解压命令</h2>
+<h3 id="gzip"><a class="header-anchor" href="#gzip">¶</a>gzip</h3>
+<ul>
+<li>所在路径/bin/gzip</li>
+<li>执行权限：所有用户</li>
+<li>功能：压缩文件，压缩后格式为.gz</li>
+<li>语法：gzip 【文件】</li>
+</ul>
+<h3 id="gunzip"><a class="header-anchor" href="#gunzip">¶</a>gunzip</h3>
+<ul>
+<li>所在路径/bin/gunzip</li>
+<li>执行权限：所有用户</li>
+<li>功能：解压缩格式为.gz的文件</li>
+<li>语法：gunzip 【文件】</li>
+<li>gzip -d 【文件】也可以解压缩</li>
+<li>注：Linux只能压缩文件，压缩后源文件会消失</li>
+</ul>
+<h3 id="tar"><a class="header-anchor" href="#tar">¶</a>tar</h3>
+<ul>
+<li>
+<p>所在路径/bin/tar</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：打包目录，打包后格式为.tar.gz</p>
+</li>
+<li>
+<p>语法：tar 【选项】【压缩后文件名】【目录】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-c，打包</li>
+<li>-v，显示详细信息</li>
+<li>-f，指定文件名</li>
+<li>-z，打包同时压缩/解压缩</li>
+<li>-x，解包</li>
+<li>注：-f一定要写在最后，不然-f后的参数会被作为文件名</li>
+</ul>
+</li>
+</ul>
+<h3 id="zip"><a class="header-anchor" href="#zip">¶</a>zip</h3>
+<ul>
+<li>所在路径/usr/bin/zip</li>
+<li>执行权限：所有用户</li>
+<li>功能：压缩文件或目录，格式为.zip</li>
+<li>语法：zip 【选项】【压缩后文件名】【文件/目录】</li>
+<li>-r，压缩目录</li>
+</ul>
+<h3 id="unzip"><a class="header-anchor" href="#unzip">¶</a>unzip</h3>
+<ul>
+<li>所在路径/usr/bin/unzip</li>
+<li>执行权限：所有用户</li>
+<li>功能：解压缩格式为.zip的压缩文件</li>
+<li>语法：unzipzip 【压缩文件】</li>
+</ul>
+<h3 id="bzip-2"><a class="header-anchor" href="#bzip2">¶</a>bzip2</h3>
+<ul>
+<li>所在路径/usr/bin/bzip2</li>
+<li>执行权限：所有用户</li>
+<li>功能：压缩文件,格式为.bz2</li>
+<li>语法：bzip2 【选项】【文件】</li>
+<li>-k，压缩文件后保留原文件</li>
+<li>注：tar -cjf 压缩文件为.tar.gz2</li>
+</ul>
+<h3 id="bunzip-2"><a class="header-anchor" href="#bunzip2">¶</a>bunzip2</h3>
+<ul>
+<li>所在路径/usr/bin/bunzip2</li>
+<li>执行权限：所有用户</li>
+<li>功能：解压缩.bz2的压缩文件</li>
+<li>语法：bunzip2 【选项】【压缩文件】</li>
+<li>-k，解压缩后保留原文件</li>
+<li>注：tar -xjf 解压.tar.bz2文件</li>
+</ul>
+<h2 id="wen-jian-sou-suo-ming-ling"><a class="header-anchor" href="#文件搜索命令">¶</a>文件搜索命令</h2>
+<h3 id="find"><a class="header-anchor" href="#find">¶</a>find</h3>
+<ul>
+<li>
+<p>原意find，所在路径/bin/find</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：查找和搜索文件</p>
+</li>
+<li>
+<p>语法：find  【搜索范围】 【匹配条件】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>
+<p>find /etc -name init，目录/etc中查找文件init</p>
+<ul>
+<li>不会搜索出包含init的文件，只会显示为init名的文件</li>
+<li>需要模糊搜索需要用*通配符或？单个字符匹配</li>
+<li>不区分大小写需要使用-iname</li>
+</ul>
+</li>
+<li>
+<p>find / -size +204800，根目录下查找大于100MB的文件</p>
+<ul>
+<li>减号表示小于多大的文件</li>
+<li>数字的单位是数据块，一个是512字节</li>
+</ul>
+</li>
+<li>
+<p>find /home -user test，根目录下查找所有者为test的文件</p>
+</li>
+<li>
+<p>find /etc -cmin -5，/etc下查找5分钟内被修改过属性的文件和目录</p>
+<ul>
+<li>-amin，访问时间access</li>
+<li>-cmin，文件属性change</li>
+<li>-mmin，文件内容modify</li>
+<li>加号表示超过多长时间</li>
+</ul>
+</li>
+<li>
+<p>-a，两个条件同时满足</p>
+<ul>
+<li>find /etc -size +163840 -a -size -204800</li>
+<li>/etc下查找大于80MB小于100MB的文件</li>
+<li>-o，两个条件满足一个即可</li>
+</ul>
+</li>
+<li>
+<p>-exec  {} \ ;，对搜索结果执行操作</p>
+<ul>
+<li>find /etc -name test -exec ls -l {} ;</li>
+<li>在/etc下查找test文件并显示其详细信息</li>
+<li>-ok {} \ ;，对执行的操作需要逐一确认是否执行</li>
+<li>{}表示对查找结果进行整合，\为转义符，;为结束</li>
+</ul>
+</li>
+<li>
+<p>-type，根据文件类型查找</p>
+<ul>
+<li>f，文件</li>
+<li>d，目录</li>
+<li>l，软链接文件</li>
+</ul>
+</li>
+<li>
+<p>-inum，根据i节点进行查找</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="qi-ta-sou-suo-ming-ling"><a class="header-anchor" href="#其他搜索命令">¶</a>其他搜索命令</h3>
+<ul>
+<li>
+<p>locate</p>
+<ul>
+<li>
+<p>原意locate，所在路径/usr/bin/locate</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：在文件资料库中查找文件</p>
+</li>
+<li>
+<p>语法：locate 【文件名】</p>
+</li>
+<li>
+<p>注意</p>
+<ul>
+<li>更新时间较长，无法查找实时新文件</li>
+<li>除非root用户下updatedb更新资料库</li>
+<li>/tmp这种临时目录下的文件不在资料库收录范围</li>
+</ul>
+</li>
+<li>
+<p>-i，不区分大小写</p>
+</li>
+</ul>
+</li>
+<li>
+<p>which</p>
+<ul>
+<li>原意which，所在路径/usr/bin/which</li>
+<li>执行权限：所有用户</li>
+<li>功能：搜索命令所在目录及别名信息</li>
+<li>语法：which  【命令】</li>
+</ul>
+</li>
+<li>
+<p>whereis</p>
+<ul>
+<li>原意whereis，所在路径/usr/bin/whereis</li>
+<li>执行权限：所有用户</li>
+<li>功能：搜索命令所在目录及帮助文档路径</li>
+<li>语法：whiereis  【命令】</li>
+</ul>
+</li>
+<li>
+<p>grep</p>
+<ul>
+<li>
+<p>原意grep，所在路径/usr/bin/grep</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：在文件中搜素字符匹配的行并输出</p>
+</li>
+<li>
+<p>语法：grep -iv 【指定字符】【文件】</p>
+<ul>
+<li>如：grep mysql /root/install.log</li>
+</ul>
+</li>
+<li>
+<p>参数</p>
+<ul>
+<li>
+<p>-i，不区分大小写</p>
+</li>
+<li>
+<p>-v，排除指定字串</p>
+<ul>
+<li>如果只排除行首有此字符的行，需要在字符前加^</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux基础命令</title>
+    <url>/2021/05/06/Linux/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="linux-ji-chu-ming-ling">Linux基础命令</h1>
+<h2 id="mu-lu-chu-li-ming-ling"><a class="header-anchor" href="#目录处理命令">¶</a>目录处理命令</h2>
+<h3 id="ls"><a class="header-anchor" href="#ls">¶</a>ls</h3>
+<ul>
+<li>
+<p>原意list，所在路径/bin/ls</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：显示目录文件</p>
+</li>
+<li>
+<p>语法：ls  【选项】  【目录或文件】</p>
+</li>
+<li>
+<p>选项参数</p>
+<ul>
+<li>-a，显示所有文件，包括隐藏文件</li>
+<li>-l，详细显示信息</li>
+<li>-d，查看目录属性（不显示文件信息）</li>
+<li>-h，文件大小显示增加可读性</li>
+<li>-i，查看文件i节点</li>
+</ul>
+</li>
+</ul>
+<h3 id="mkdir"><a class="header-anchor" href="#mkdir">¶</a>mkdir</h3>
+<ul>
+<li>
+<p>原意make directories，路径/bin/mkdir</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：创建新目录</p>
+</li>
+<li>
+<p>语法：mkdir 【选项】 【目录名1】【目录名2】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-p，递归创建</li>
+</ul>
+</li>
+</ul>
+<h3 id="cd"><a class="header-anchor" href="#cd">¶</a>cd</h3>
+<ul>
+<li>
+<p>原意 change directory，shell内置命令</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：切换目录</p>
+</li>
+<li>
+<p>语法：cd 【目录】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>…回到上一级目录</li>
+<li>-，回到上个所在目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="pwd"><a class="header-anchor" href="#pwd">¶</a>pwd</h3>
+<ul>
+<li>原意print working directory，所在路径/bin/pwd</li>
+<li>执行权限：所有用户</li>
+<li>功能：显示当前目录路径</li>
+<li>语法：pwd</li>
+</ul>
+<h3 id="rmdir"><a class="header-anchor" href="#rmdir">¶</a>rmdir</h3>
+<ul>
+<li>原意remove empty directories，路径/bin/rmdir</li>
+<li>执行权限：所有用户</li>
+<li>功能：删除空目录</li>
+<li>语法：rmdir  【目录名】</li>
+</ul>
+<h3 id="cp"><a class="header-anchor" href="#cp">¶</a>cp</h3>
+<ul>
+<li>
+<p>原意copy，路径/bin/cp</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：复制文件或目录</p>
+</li>
+<li>
+<p>语法：cp 【选项】 【原文件/目录】【目标目录】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-p，保留文件属性复制</li>
+<li>-r，复制目录</li>
+</ul>
+</li>
+<li>
+<p>注意：可以同时对多个文件或目录进行复制</p>
+</li>
+</ul>
+<h3 id="mv"><a class="header-anchor" href="#mv">¶</a>mv</h3>
+<ul>
+<li>原意move，路径/bin/mv</li>
+<li>执行权限：所有用户</li>
+<li>功能：剪切文件、改名</li>
+<li>语法：mv【选项】 【原文件/目录】【目标目录】</li>
+<li>注意：可以同时对多个文件或目录进行剪切</li>
+</ul>
+<h3 id="rm"><a class="header-anchor" href="#rm">¶</a>rm</h3>
+<ul>
+<li>
+<p>原意rm，路径/bin/rm</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：删除文件或目录</p>
+</li>
+<li>
+<p>语法：rm【选项】 【原文件/目录】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-r，删除目录</li>
+<li>-f，强制执行</li>
+</ul>
+</li>
+</ul>
+<h2 id="wen-jian-chu-li-ming-ling"><a class="header-anchor" href="#文件处理命令">¶</a>文件处理命令</h2>
+<h3 id="touch"><a class="header-anchor" href="#touch">¶</a>touch</h3>
+<ul>
+<li>原意touch，路径/bin/touch</li>
+<li>执行权限：所有用户</li>
+<li>功能：创建空文件</li>
+<li>语法：touch 【文件名】</li>
+</ul>
+<h3 id="cat"><a class="header-anchor" href="#cat">¶</a>cat</h3>
+<ul>
+<li>
+<p>原意cat，路径/bin/cat</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：显示文件内容</p>
+</li>
+<li>
+<p>语法：cat 【文件名】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-n，显示行号</li>
+</ul>
+</li>
+<li>
+<p>注意tac为反向显示（参考学习）</p>
+</li>
+</ul>
+<h3 id="more"><a class="header-anchor" href="#more">¶</a>more</h3>
+<ul>
+<li>
+<p>原意more，路径/bin/more</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：分页显示文件内容</p>
+</li>
+<li>
+<p>语法：more 【文件名】</p>
+</li>
+<li>
+<p>操作</p>
+<ul>
+<li>空格或f，翻后页</li>
+<li>B或b，往前翻页</li>
+<li>回车，换行</li>
+<li>q或Q，退出</li>
+</ul>
+</li>
+</ul>
+<h3 id="less"><a class="header-anchor" href="#less">¶</a>less</h3>
+<ul>
+<li>
+<p>原意less，路径/usr/bin/less</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：分页显示文件内容（可搜索）</p>
+</li>
+<li>
+<p>语法：less 【文件名】</p>
+</li>
+<li>
+<p>操作</p>
+<ul>
+<li>空格或page down，翻后页</li>
+<li>page up，往前翻页</li>
+<li>回车，换行</li>
+<li>q或Q，退出</li>
+<li>/XXX，可搜索文件中相关内容，n向下查找，N反向查找</li>
+</ul>
+</li>
+</ul>
+<h3 id="head"><a class="header-anchor" href="#head">¶</a>head</h3>
+<ul>
+<li>
+<p>原意head，路径/usr/bin/head</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：显示文件前面十行内容</p>
+</li>
+<li>
+<p>语法：head 【文件名】</p>
+</li>
+<li>
+<p>操作</p>
+<ul>
+<li>-n，显示指定行数</li>
+</ul>
+</li>
+</ul>
+<h3 id="tail"><a class="header-anchor" href="#tail">¶</a>tail</h3>
+<ul>
+<li>
+<p>原意tail，路径/usr/bin/tail</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：显示文件后面十行内容</p>
+</li>
+<li>
+<p>语法：tail 【文件名】</p>
+</li>
+<li>
+<p>操作</p>
+<ul>
+<li>-n，显示指定行数</li>
+<li>-f，动态显示文件末尾内容</li>
+</ul>
+</li>
+</ul>
+<h2 id="quan-xian-guan-li-ming-ling"><a class="header-anchor" href="#权限管理命令">¶</a>权限管理命令</h2>
+<h3 id="chmod"><a class="header-anchor" href="#chmod">¶</a>chmod</h3>
+<ul>
+<li>
+<p>原意change the permissions mode of a file</p>
+</li>
+<li>
+<p>路径/bin/chmod</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：改变文件或目录权限</p>
+</li>
+<li>
+<p>语法</p>
+<ul>
+<li>
+<p>chmod  +  【{ugoa} {±=} {rwx}】【文件或目录】</p>
+<p>u：代表所有者<br>
+g：代表所属组<br>
+o：代表其他人<br>
+a：代表所有人</p>
+</li>
+<li>
+<p>chmod 【mode = 421】【文件或目录】</p>
+</li>
+</ul>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-R，递归修改</li>
+</ul>
+</li>
+</ul>
+<h3 id="qi-ta-quan-xian-guan-li-ming-ling"><a class="header-anchor" href="#其他权限管理命令">¶</a>其他权限管理命令</h3>
+<ul>
+<li>
+<p>chown</p>
+<ul>
+<li>
+<p>原意change file ownership</p>
+</li>
+<li>
+<p>路径/bin/chown</p>
+</li>
+<li>
+<p>执行权限：root用户</p>
+</li>
+<li>
+<p>功能：改变文件或目录的所有者（用户存在）</p>
+</li>
+<li>
+<p>语法</p>
+<ul>
+<li>chown  【用户】 【文件或目录】</li>
+</ul>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-R，递归修改</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>chgrp</p>
+<ul>
+<li>
+<p>原意change file group ownership</p>
+</li>
+<li>
+<p>路径/bin/chgrp</p>
+</li>
+<li>
+<p>执行权限：root用户</p>
+</li>
+<li>
+<p>功能：改变文件或目录的所属组</p>
+</li>
+<li>
+<p>语法</p>
+<ul>
+<li>chgrp  【用户组】 【文件或目录】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>umask</p>
+<ul>
+<li>
+<p>原意the user file-creation mask</p>
+</li>
+<li>
+<p>shell内置命令</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：显示、设置文件的缺省权限</p>
+</li>
+<li>
+<p>语法</p>
+<ul>
+<li>umask  【-S】 【数值】</li>
+<li>以rwx形式显示新建文件的缺省权限</li>
+</ul>
+</li>
+<li>
+<p>注意</p>
+<ul>
+<li>针对目录默认权限为755，文件权限为644</li>
+<li>umask结果为0022，umask -S结果为755</li>
+<li>022是需要和777做与运算的，也就是755</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="quan-xian-hua-fen-shuo-ming"><a class="header-anchor" href="#权限划分说明">¶</a>权限划分说明</h3>
+<ul>
+<li>
+<p>r可读–4，w可写–2，x可执行–1</p>
+</li>
+<li>
+<p>rwxrw-r–：对应二进制和764</p>
+</li>
+<li>
+<p>对文件来说</p>
+<ul>
+<li>r：可以查看文件内容</li>
+<li>w：可以修改文件内容</li>
+<li>x：可以执行文件</li>
+</ul>
+</li>
+<li>
+<p>对目录来说</p>
+<ul>
+<li>r：可以列出目录中的内容</li>
+<li>w：可以在目录创建、删除文件</li>
+<li>x：可以进入目录</li>
+</ul>
+</li>
+</ul>
+<h2 id="lian-jie-ming-ling"><a class="header-anchor" href="#链接命令">¶</a>链接命令</h2>
+<h3 id="ln"><a class="header-anchor" href="#ln">¶</a>ln</h3>
+<ul>
+<li>
+<p>原意link，路径/bin/ln</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：生成链接文件</p>
+</li>
+<li>
+<p>语法：ln 【选项】 【原文件】 【目标文件】</p>
+</li>
+<li>
+<p>常用参数</p>
+<ul>
+<li>-s，创建软连接</li>
+</ul>
+</li>
+<li>
+<p>链接概念</p>
+<ul>
+<li>
+<p>软链接</p>
+<ul>
+<li>类似于快捷方式，指向性符号链接</li>
+<li>源文件丢失后无法运行</li>
+<li>i节点和源文件不同</li>
+</ul>
+</li>
+<li>
+<p>硬链接</p>
+<ul>
+<li>拷贝且与源文件同时更新</li>
+<li>源文件丢失后可以访问</li>
+<li>i节点与源文件相同</li>
+<li>不能跨分区建立，不能针对目录建立</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="yong-hu-guan-li-ming-ling"><a class="header-anchor" href="#用户管理命令">¶</a>用户管理命令</h2>
+<h3 id="useradd"><a class="header-anchor" href="#useradd">¶</a>useradd</h3>
+<ul>
+<li>所在路径/usr/sbin/useradd</li>
+<li>执行权限：root用户</li>
+<li>功能：添加新用户</li>
+<li>语法：useradd 【用户名】</li>
+</ul>
+<h3 id="passwd"><a class="header-anchor" href="#passwd">¶</a>passwd</h3>
+<ul>
+<li>
+<p>所在路径/usr/bin/passwd</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：设置用户明码</p>
+</li>
+<li>
+<p>语法：passwd【用户名】</p>
+</li>
+<li>
+<p>注意</p>
+<ul>
+<li>root用户可以无视密码复杂度修改，普通用户不行</li>
+<li>普通用户只能更改自己的密码，root用户可修改任何用户密码</li>
+</ul>
+</li>
+</ul>
+<h3 id="who"><a class="header-anchor" href="#who">¶</a>who</h3>
+<ul>
+<li>所在路径：usr/bin/who</li>
+<li>执行权限：所有用户</li>
+<li>功能：查看登录用户信息</li>
+<li>语法：who</li>
+<li>tty为本地终端登录，pts为远程终端登陆</li>
+<li>注：用w命令能得到更详细的信息</li>
+</ul>
+<h2 id="bang-zhu-ming-ling"><a class="header-anchor" href="#帮助命令">¶</a>帮助命令</h2>
+<h3 id="man"><a class="header-anchor" href="#man">¶</a>man</h3>
+<ul>
+<li>
+<p>原意manual，所在路径/usr/bin/man</p>
+</li>
+<li>
+<p>执行权限：所有用户</p>
+</li>
+<li>
+<p>功能：获取帮助信息</p>
+</li>
+<li>
+<p>语法：man  【命令或配置文件】</p>
+</li>
+<li>
+<p>man ls，查看ls命令的帮助信息</p>
+</li>
+<li>
+<p>man services，查看配置文件信息（不用绝对路径）</p>
+</li>
+<li>
+<p>当命令和配置文件重名时会优先查看命令</p>
+<ul>
+<li>1，代表命令</li>
+<li>5，代表文件</li>
+<li>查看文件使用 man 5 XXX</li>
+</ul>
+</li>
+</ul>
+<h3 id="qi-ta-ming-ling"><a class="header-anchor" href="#其他命令">¶</a>其他命令</h3>
+<ul>
+<li>whatis，只查看命令做什么用的信息</li>
+<li>apropos，查看配置文件用途信息（不用绝对路径）</li>
+<li>命令   --help，查看命令的常见选项信息</li>
+<li>help，查看shell内置命令信息</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java异常</title>
     <url>/2021/05/06/Java/Java%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<h1 id="yi-chang">异常</h1>
@@ -632,25 +2886,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java初见</title>
-    <url>/2021/04/30/Java/Java%E5%88%9D%E8%A7%81/</url>
-    <content><![CDATA[<h1 id="java-chu-jian">Java初见</h1>
-<h2 id="san-da-ban-ben"><a class="header-anchor" href="#三大版本">¶</a>三大版本</h2>
-<p><strong>JavaSE</strong>，标准版，桌面程序，控制台开始</p>
-<p><strong>javaME</strong>，嵌入式开发，手机，小家电</p>
-<p><strong>javaEE</strong>，E企业级开发，web端，服务器开发</p>
-<p><strong>JDK</strong>，Java Development Kit</p>
-<p><strong>JRE</strong>，Java Runtime Environment</p>
-<p><strong>JVM</strong>，Java Virtual Machine</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>“Java基础”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java方法详解</title>
     <url>/2021/04/30/Java/Java%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="java-fang-fa-xiang-jie">Java方法详解</h1>
@@ -779,6 +3014,25 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Demo04 demo04 = <span class="keyword">new</span> Demo04();</span><br><span class="line">    System.out.println(demo04.fatorial(<span class="number">5</span>));</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fatorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>)&#123;   <span class="comment">//递归边界，递归头</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n * fatorial(n-<span class="number">1</span>);  <span class="comment">//递归体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="ji-suan-qi-shi-li"><a class="header-anchor" href="#计算器示例">¶</a>计算器示例</h2>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        Demo05 demo05 = <span class="keyword">new</span> Demo05();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入要使用的功能：&quot;</span>);</span><br><span class="line">        String arith = scanner.nextLine();  <span class="comment">//决定四则运算的符号</span></span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第一个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> x = scanner.nextDouble();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第二个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> y = scanner.nextDouble();</span><br><span class="line">        <span class="keyword">switch</span> (arith)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;+&quot;</span>:  <span class="comment">//加法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.add(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;-&quot;</span>:  <span class="comment">//减法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.sub(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;*&quot;</span>:  <span class="comment">//乘法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.mul(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;/&quot;</span>:  <span class="comment">//除法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.div(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">sub</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mul</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a * b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;输入错误请重新输入！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="keyword">return</span> (a / b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>“Java基础”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java初见</title>
+    <url>/2021/04/30/Java/Java%E5%88%9D%E8%A7%81/</url>
+    <content><![CDATA[<h1 id="java-chu-jian">Java初见</h1>
+<h2 id="san-da-ban-ben"><a class="header-anchor" href="#三大版本">¶</a>三大版本</h2>
+<p><strong>JavaSE</strong>，标准版，桌面程序，控制台开始</p>
+<p><strong>javaME</strong>，嵌入式开发，手机，小家电</p>
+<p><strong>javaEE</strong>，E企业级开发，web端，服务器开发</p>
+<p><strong>JDK</strong>，Java Development Kit</p>
+<p><strong>JRE</strong>，Java Runtime Environment</p>
+<p><strong>JVM</strong>，Java Virtual Machine</p>
 ]]></content>
       <categories>
         <category>Java</category>
