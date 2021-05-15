@@ -102,7 +102,7 @@
     root: '',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -457,24 +457,7 @@ Shell分类
 
 Bourne Shell，主文件名为sh
 
-包括sh、ksh、Bash、psh、zsh
-Bash和sh兼容
-目前主流Shell就是Bash
-
-
-
-C Shell，主要在BSD版的Unix系统中，语法类似C
-
-包括csh、tcsh
-
-
-
-两种Shell不兼容
-
-
-
-
-Linu
+包括sh、ksh、Bash、p
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -682,24 +665,6 @@ i，光标所在字符前插入
 I，光标所在行首插入
 o，光标下插入新行
 O，光标上插入新行
-
-
-
-定位命令
-
-：set nu，设置行号
-：set nonu，取消行号
-gg到第一行，G到最后一行
-nG，到第n行
-：n，到第n行
-$，移至行尾
-0，移至行首
-
-
-
-删除命令
-
-x，删除光标所在字
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -911,14 +876,7 @@ init 6
 ¶补充：系统运行级别，init命令调用
 
 0，关机
-1，单用户（启用最小服务）
-2，不完全多用户，不含NFS服务
-3，完全多用户
-4，未分配
-5，图形界面
-6，重启
-cat /etc/inittab可以查看
-runlevel命令也可查看当前及上一次运行级
+1
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1127,28 +1085,7 @@ runlevel命令也可查看当前及上一次运行级
 ¶mkdir
 
 
-原意make directories，路径/bin/mkdir
-
-
-执行权限：所有用户
-
-
-功能：创建新目录
-
-
-语法：mkdir 【选项】 【目录名1】【目录名2】
-
-
-常用参数
-
--p，递归创建
-
-
-
-¶cd
-
-
-原意 change
+原意make directories
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1357,18 +1294,7 @@ runlevel命令也可查看当前及上一次运行级
 在编译时无法简单地忽略
 
 
-运行时异常
-运行时异常可能被程序员避免的异常
-与检查性异常相反，运行时可以在编译时被忽略
 
-
-错误ERROR
-错误不是异常，而是脱离程序员控制的问题
-在代码中通常被忽略
-在编译时检查不到的
-
-
-¶异常
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1562,14 +1488,7 @@ runlevel命令也可查看当前及上一次运行级
 
 对于描述复杂的事物，为了从宏观上把握
 整体上合理分析，我们需要使用面向对象的思路来分析
-但到了具体的微观操作，仍然需要面向过程的思路去处理
-
-¶什么是面向对象
-面向对象编程的本质：
-以类的方式组织代码，以对象的形式（封装）数据
-
-抽象：抽取对象相似的部分组成类，类是对对象的抽象
-三大特性：封装、继承
+但到了具体的
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1759,12 +1678,7 @@ runlevel命令也可查看当前及上一次运行级
 数组必须先声明，才能在程序中使用
 1234//声明数组dataType[] arrayRefVar;  //首选方法或dataType arrayRefVar[]; //效果一致但不推荐
 Java使用new操作符创建数组
-12//创建数组dataType[] arrayRefVar = new dataType[arraySize]
-注意：
-
-数组的元素是通过索引访问的，索引从0开始
-获取数组长度使用array.length
-数组要先声
+12//创建数组d
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1955,10 +1869,7 @@ Scanner类来获取用户的输入
 通过Scanner类的**next()和nextLine()**方法来获取输入的字符串
 
 
-读取前一般需要使用**hasNext()和hasNextLine()**判断是否还有输入的数据
-
-
-123456789101112131415161718import java.util.Scanner;public class scanner &#123;   
+读取前一般需要使用**hasNext()和hasNextLine
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2164,14 +2075,7 @@ Scanner类来获取用户的输入
 方法包含一个方法头和方法体：
 
 修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型
-返回值类型：可能会返回值，没有返回值则为void
-方法名：方法名称，和参数表共同构成方法签名
-参数类型：
-
-可选，可不带参数。
-方法被调用时，传递值给参数
-参数列表指方法的参数类型、顺序和参数的个数
-形参：方法调用用于接收外界
+返回值类型：可能会返回值，
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -2521,6 +2425,10 @@ JVM，Java Virtual Machine
                     <a href="https://baidu.com/" title="百度" target="_blank">百度</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.google.com/" title="Google" target="_blank">Google</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -2532,6 +2440,13 @@ JVM，Java Virtual Machine
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -2595,11 +2510,6 @@ JVM，Java Virtual Machine
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
