@@ -86,15 +86,15 @@
 
 
 
-<meta name="description" content="异常 ¶什么是异常 实际工作中，遇到的情况不可能绝对完美 如：   用户输入不符合要求   文件不存在或格式不对   读取数据库数据为空   内存或硬盘写满，等等   以上都称为异常，英文Exception 异常指程序运行中出现的各种意外情况 发生在程序运行期间，影响程序执行流程 ¶异常的分类   检查性异常： 最具代表的是用户错误或问题引起的异常 是程序员无法预见的 在编译时无法简单地忽略">
+<meta name="description" content="Java方法详解 ¶什么是方法 方法概述：   是执行某个特定功能的代码片段   方法包含于类或对象中   方法在程序中被创建，在其他地方被引用   设计方法的原则：   方法的本质是功能块，实现某个功能   设计方法的时候最好保持方法的原子性（只实现一个功能）   方法的定义： 方法包含一个方法头和方法体：  修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型 返回值类型：可能会返回值，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java异常">
-<meta property="og:url" content="https://wirenjie.github.io/2021/05/06/Java%E5%BC%82%E5%B8%B8/index.html">
+<meta property="og:title" content="Java方法详解">
+<meta property="og:url" content="https://wirenjie.github.io/2021/04/30/Java/Java%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="魏仁杰的个人博客">
-<meta property="og:description" content="异常 ¶什么是异常 实际工作中，遇到的情况不可能绝对完美 如：   用户输入不符合要求   文件不存在或格式不对   读取数据库数据为空   内存或硬盘写满，等等   以上都称为异常，英文Exception 异常指程序运行中出现的各种意外情况 发生在程序运行期间，影响程序执行流程 ¶异常的分类   检查性异常： 最具代表的是用户错误或问题引起的异常 是程序员无法预见的 在编译时无法简单地忽略">
+<meta property="og:description" content="Java方法详解 ¶什么是方法 方法概述：   是执行某个特定功能的代码片段   方法包含于类或对象中   方法在程序中被创建，在其他地方被引用   设计方法的原则：   方法的本质是功能块，实现某个功能   设计方法的时候最好保持方法的原子性（只实现一个功能）   方法的定义： 方法包含一个方法头和方法体：  修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型 返回值类型：可能会返回值，">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-05-06T03:50:17.000Z">
-<meta property="article:modified_time" content="2021-05-06T03:50:47.543Z">
+<meta property="article:published_time" content="2021-04-30T06:50:17.000Z">
+<meta property="article:modified_time" content="2021-05-06T06:59:33.169Z">
 <meta property="article:author" content="魏仁杰">
 <meta property="article:tag" content="“Java基础”">
 <meta name="twitter:card" content="summary">
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://wirenjie.github.io/2021/05/06/Java异常/"/>
+  <link rel="canonical" href="https://wirenjie.github.io/2021/04/30/Java/Java方法/"/>
 
 
 
 
 
-  <title>Java异常 | 魏仁杰的个人博客</title>
+  <title>Java方法详解 | 魏仁杰的个人博客</title>
   
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://wirenjie.github.io/2021/05/06/Java%E5%BC%82%E5%B8%B8/">
+    <link itemprop="mainEntityOfPage" href="https://wirenjie.github.io/2021/04/30/Java/Java%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java异常</h1>
+          <h1 class="post-title" itemprop="name headline">Java方法详解</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-06T11:50:17+08:00">
-                2021-05-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-30T14:50:17+08:00">
+                2021-04-30
               </time>
             
 
@@ -379,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2021/05/06/Java%E5%BC%82%E5%B8%B8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/05/06/Java%E5%BC%82%E5%B8%B8/" itemprop="commentCount"></span>
+                <a href="/2021/04/30/Java/Java%E6%96%B9%E6%B3%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/04/30/Java/Java%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -427,136 +427,132 @@
       
 
       
-        <h1 id="yi-chang">异常</h1>
-<h2 id="shi-yao-shi-yi-chang"><a class="header-anchor" href="#什么是异常">¶</a>什么是异常</h2>
-<p>实际工作中，遇到的情况不可能绝对完美</p>
-<p>如：</p>
+        <h1 id="java-fang-fa-xiang-jie">Java方法详解</h1>
+<h2 id="shi-yao-shi-fang-fa"><a class="header-anchor" href="#什么是方法">¶</a>什么是方法</h2>
+<p><strong>方法概述：</strong></p>
 <ol>
 <li>
-<p>用户输入不符合要求</p>
+<p>是执行某个特定功能的代码片段</p>
 </li>
 <li>
-<p>文件不存在或格式不对</p>
+<p>方法包含于类或对象中</p>
 </li>
 <li>
-<p>读取数据库数据为空</p>
-</li>
-<li>
-<p>内存或硬盘写满，等等</p>
+<p>方法在程序中被创建，在其他地方被引用</p>
 </li>
 </ol>
-<p>以上都称为异常，英文<strong>Exception</strong></p>
-<p>异常指程序运行中出现的各种意外情况</p>
-<p>发生在程序运行期间，影响程序执行流程</p>
-<h2 id="yi-chang-de-fen-lei"><a class="header-anchor" href="#异常的分类">¶</a>异常的分类</h2>
+<p><strong>设计方法的原则：</strong></p>
 <ol>
 <li>
-<p>检查性异常：</p>
-<p>最具代表的是<strong>用户错误或问题引起</strong>的异常</p>
-<p>是<strong>程序员无法预见</strong>的</p>
-<p>在编译时<strong>无法简单地忽略</strong></p>
+<p>方法的本质是功能块，实现某个功能</p>
 </li>
 <li>
-<p>运行时异常</p>
-<p>运行时异常<strong>可能被程序员避免</strong>的异常</p>
-<p>与检查性异常相反，运行时可以在<strong>编译时被忽略</strong></p>
-</li>
-<li>
-<p>错误ERROR</p>
-<p><strong>错误不是异常</strong>，而是脱离程序员控制的问题</p>
-<p>在代码中通常被忽略</p>
-<p>在编译时<strong>检查不到</strong>的</p>
+<p>设计方法的时候最好保持方法的原子性（只实现一个功能）</p>
 </li>
 </ol>
-<h2 id="yi-chang-ti-xi-jie-gou"><a class="header-anchor" href="#异常体系结构">¶</a>异常体系结构</h2>
-<p>Java中把异常当作对象来处理</p>
-<p>并定义了一个基类<strong>java.lang.Throwable</strong>作为所有异常的超类</p>
-<p>异常通常在框架中分为错误ERROR和异常Exception</p>
-<h2 id="cuo-wu-error"><a class="header-anchor" href="#错误ERROR">¶</a>错误ERROR</h2>
-<p>Error类由Java虚拟机生成并抛出</p>
-<p>大多数错误与代码编写者所执行的操作无关</p>
-<p>虚拟机运行错误：</p>
+<p><strong>方法的定义：</strong></p>
+<p>方法包含一个方法头和方法体：</p>
+<ol>
+<li>修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型</li>
+<li>返回值类型：可能会返回值，没有返回值则为void</li>
+<li>方法名：方法名称，和参数表共同构成方法签名</li>
+<li>参数类型：
+<ol>
+<li>可选，可不带参数。</li>
+<li>方法被调用时，传递值给参数</li>
+<li>参数列表指方法的参数类型、顺序和参数的个数</li>
+<li>形参：方法调用用于接收外界输入的数据</li>
+<li>实参：调用方法传递给方法的数据</li>
+</ol>
+</li>
+<li>方法体：具体的方法语句，定义方法的功能</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">修饰符  返回值类型  方法名(参数类型  参数名)&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法体</span></span><br><span class="line">    <span class="keyword">return</span> 返回值;</span><br><span class="line">&#125;</span><br><span class="line">例：</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">//实参：实际调用传递的参数</span></span><br><span class="line">        <span class="keyword">int</span> sum = add(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加法</span></span><br><span class="line">	<span class="comment">//形参：用来定义的</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>==return 0; //表示终止方法，类似break==</p>
+<p><strong>方法的调用</strong></p>
+<p>调用方式都是  对象名.方法名，但有两种方式</p>
 <ol>
 <li>
-<p>当JVM不再有继续执行操作所需要的内存资源时</p>
+<p>方法返回值时，方法调用被当作一个值：</p>
+<p>如：int num = max(30, 40);</p>
 </li>
 <li>
-<p>将出现OutOfMemoryError</p>
-</li>
-<li>
-<p>这些异常发生时，JVM（虚拟）一般会选择线程终止</p>
+<p>如果方法无返回值，调用为一条语句</p>
+<p>如：System.out.println(“XXX”);</p>
 </li>
 </ol>
-<p>还有虚拟机试图执行应用时：</p>
+<h2 id="kuo-zhan-zhi-chuan-di-he-yin-yong-chuan-di"><a class="header-anchor" href="#扩展（值传递和引用传递）">¶</a>扩展（值传递和引用传递）</h2>
+<h2 id="fang-fa-de-zhong-zai"><a class="header-anchor" href="#方法的重载">¶</a>方法的重载</h2>
+<p>重载就是在一个类中，有相同的函数名称</p>
+<p>但是形参不同的函数</p>
+<p><strong>重载的原则：</strong></p>
+<ol>
+<li>方法名称必须相同</li>
+<li>参数列表必须不同（个数不同或类型不同，参数排列顺序不同等）</li>
+<li>方法的返回类型可以相同也可以不同</li>
+<li>如果只是返回类型不同不能够称为方法的重载</li>
+</ol>
+<p><strong>实现：</strong></p>
+<ol>
+<li>方法名相同时，编译器会根据调用方法的参数个数、类型等逐个匹配</li>
+<li>匹配完后选择最为准确的方法调用</li>
+<li>如果匹配失败，则编译器报错</li>
+</ol>
+<h2 id="ming-ling-xing-chuan-can-liao-jie"><a class="header-anchor" href="#命令行传参（了解）">¶</a>命令行传参（了解）</h2>
+<p>程序在运行的时候再传递给它消息，通过main()函数实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.renjie.wei.method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String i : args) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;args[]:&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//cmd或terminal中调用传参：</span></span><br><span class="line">D:\JavaSE\基础语法\src\com\renjie\wei\method&gt; javac Demo02.java</span><br><span class="line">    </span><br><span class="line">D:\JavaSE\基础语法\src&gt; </span><br><span class="line">java com.renjie.wei.method.Demo02.java hello world ! <span class="comment">//其中hello world！就是传递的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出如下：</span></span><br><span class="line">args[]:hello</span><br><span class="line">args[]:world</span><br><span class="line">args[]:!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="ke-bian-can-shu"><a class="header-anchor" href="#可变参数">¶</a>可变参数</h2>
 <ol>
 <li>
-<p>类定义错误NoClassDefFoundError</p>
+<p>Java 1.5开始出现</p>
 </li>
 <li>
-<p>链接错误LinkageError</p>
+<p>支持传递同类型的可变参数给一个方法</p>
 </li>
 <li>
-<p>这些错误不可查</p>
+<p>声明中，在指定参数类型后加一个省略号(…)</p>
 </li>
 <li>
-<p>应用程序的控制和处理能力之外</p>
+<p>一个方法中只能指定一个可变参数</p>
 </li>
 <li>
-<p>绝大多数时程序运行时不允许出现的状况</p>
+<p>但必须是方法的最后一个参数</p>
+</li>
+<li>
+<p>任何普通的参数都必须在可变参数之前声明</p>
+</li>
+<li>
+<p>本质就是数组</p>
 </li>
 </ol>
-<h2 id="exception"><a class="header-anchor" href="#Exception">¶</a>Exception</h2>
-<p>异常分支：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Demo03 demo03 = <span class="keyword">new</span> Demo03();</span><br><span class="line">        demo03.test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//可变参数实质就是数组</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span>... b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">            System.out.println(a+b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="di-gui"><a class="header-anchor" href="#递归">¶</a>递归</h2>
 <ol>
-<li>RuntimeException，运行时异常</li>
-<li>ArraryIndexOutOfBoundsException，数据下标越界</li>
-<li>NullPointerException，空指针异常</li>
-<li>ArithmeticException，算数异常</li>
-<li>MissingResourceException，丢失资源</li>
-<li>ClassNotFoundException，找不到类</li>
+<li>
+<p>递归就是自己调用自己</p>
+</li>
+<li>
+<p>递归可以用简单的程序解决复杂的问题</p>
+</li>
+<li>
+<p>用少量的程序描述出解题过程所需要的多次重复运算</p>
+</li>
+<li>
+<p>大大减少了程序的代码量</p>
+</li>
+<li>
+<p>递归的能力在于用有限的语句来定义对象的无限集合</p>
+</li>
 </ol>
-<p>以上异常是不检查异常，程序可以选择捕获处理，也可以不处理</p>
-<p>一些异常一般由程序逻辑错误引起的，应尽可能避免这些异常发生</p>
-<h2 id="error-he-exception-de-qu-bie"><a class="header-anchor" href="#Error和Exception的区别">¶</a>Error和Exception的区别</h2>
+<p><strong>递归的结构：</strong></p>
 <ol>
-<li>Error通常是灾难性的致命的错误，是程序无法控制和处理的</li>
-<li>当出现这些异常时，JVM通常会终止进程</li>
-<li>而Exception通常时可以被程序处理的</li>
-<li>并且在程序中应尽可能的去处理这些异常</li>
+<li>递归头：什么时候不调用自己，没有头将陷入死循环</li>
+<li>递归体：什么时候调用自身方法</li>
 </ol>
-<h2 id="yi-chang-chu-li-ji-zhi"><a class="header-anchor" href="#异常处理机制">¶</a>异常处理机制</h2>
-<h4 id="pao-chu-yi-chang"><a class="header-anchor" href="#抛出异常">¶</a>抛出异常</h4>
-<h4 id="bu-huo-yi-chang"><a class="header-anchor" href="#捕获异常">¶</a>捕获异常</h4>
-<h4 id="yi-chang-chu-li-wu-ge-guan-jian-zi"><a class="header-anchor" href="#异常处理五个关键字">¶</a>异常处理五个关键字</h4>
-<ol>
-<li>try</li>
-<li>catch</li>
-<li>finally</li>
-<li>throw ，方法中抛出异常使用</li>
-<li>throws，方法抛出异常</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//try监控区域</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            System.out.println(a/b);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            <span class="comment">//参数为想要捕获的异常类型，若有对应异常则执行</span></span><br><span class="line">            <span class="comment">//最大的参数为 throwable</span></span><br><span class="line">            <span class="comment">//可以有多个catch，但是会执行最先匹配的</span></span><br><span class="line">            <span class="comment">//因此需要将范围最大的写在最后面</span></span><br><span class="line">            <span class="comment">//快捷键：ctrl+alt+t</span></span><br><span class="line">            System.out.println(<span class="string">&quot;Exception&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Error e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ERROR&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Throwable e)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Throwable&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123; <span class="comment">//善后工作，是否处理异常不影响执行，可以不写finally</span></span><br><span class="line">            System.out.println(<span class="string">&quot;finally&quot;</span>);</span><br><span class="line">            <span class="comment">//finally一般用于IO流、资源等的关闭，如scanner.close</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;=====================&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">new</span> Test().test(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">            e.printStackTrace(); <span class="comment">//输出异常</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//throw throws</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span><span class="keyword">throws</span> ArithmeticException</span>&#123;<span class="comment">//若方法中处理不了异常，则方法抛出异常</span></span><br><span class="line">        <span class="keyword">if</span>(b == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArithmeticException();<span class="comment">//主动抛出异常，主要用于方法中</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="zi-ding-yi-yi-chang"><a class="header-anchor" href="#自定义异常">¶</a>自定义异常</h2>
-<p>Java内置的异常类可以描述编程时出现的大部分异常</p>
-<p>自定义异常只需继承Exception类即可</p>
-<p>创建自定义异常步骤：</p>
-<ol>
-<li>创建自定义异常类</li>
-<li>方法种通过throw关键字抛出异常对象</li>
-<li>若在当前抛出异常的方法中处理异常，则用try-catch语句捕获并处理</li>
-<li>否则在方法声明处通过throws指名要抛出给方法调用者的异常</li>
-<li>再在出现异常方法的调用者中捕获并处理异常</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test01</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a)</span> <span class="keyword">throws</span> MyException</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;传递的参数：&quot;</span> + a);</span><br><span class="line">        <span class="keyword">if</span>(a&gt;<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> MyException(a); <span class="comment">//抛出异常，下面的语句不执行</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;OK&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            test(<span class="number">11</span>); <span class="comment">//调用测试函数</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;MyException=&gt;&quot;</span> + e.toString());;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义异常类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span>&#123;</span><br><span class="line">    <span class="comment">//传递数字大于10</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> detail;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.detail = a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印错误信息方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;MyException&#123;&quot;</span> + detail + <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="zong-jie"><a class="header-anchor" href="#总结">¶</a>总结</h2>
-<ol>
-<li>处理异常时，采用逻辑去合理规避同时使用try-catch处理</li>
-<li>多重catch块后，可以加一个catch(exception)来处理可能被遗漏的异常</li>
-<li>对于不确定的代码，也可以使用try-catch来处理潜在异常</li>
-<li>尽量去处理异常，不能只是简单打印输出异常信息</li>
-<li>如何处理异常根据不同的业务需求和异常类型决定</li>
-<li>尽量添加finally块去释放占用的资源</li>
-</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Demo04 demo04 = <span class="keyword">new</span> Demo04();</span><br><span class="line">    System.out.println(demo04.fatorial(<span class="number">5</span>));</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fatorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>)&#123;   <span class="comment">//递归边界，递归头</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n * fatorial(n-<span class="number">1</span>);  <span class="comment">//递归体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ji-suan-qi-shi-li"><a class="header-anchor" href="#计算器示例">¶</a>计算器示例</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        Demo05 demo05 = <span class="keyword">new</span> Demo05();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入要使用的功能：&quot;</span>);</span><br><span class="line">        String arith = scanner.nextLine();  <span class="comment">//决定四则运算的符号</span></span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第一个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> x = scanner.nextDouble();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第二个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> y = scanner.nextDouble();</span><br><span class="line">        <span class="keyword">switch</span> (arith)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;+&quot;</span>:  <span class="comment">//加法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.add(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;-&quot;</span>:  <span class="comment">//减法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.sub(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;*&quot;</span>:  <span class="comment">//乘法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.mul(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;/&quot;</span>:  <span class="comment">//除法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.div(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">sub</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mul</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a * b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;输入错误请重新输入！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="keyword">return</span> (a / b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -586,7 +582,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://wirenjie.github.io/2021/05/06/Java%E5%BC%82%E5%B8%B8/" title="Java异常">https://wirenjie.github.io/2021/05/06/Java%E5%BC%82%E5%B8%B8/</a>
+    <a href="https://wirenjie.github.io/2021/04/30/Java/Java%E6%96%B9%E6%B3%95/" title="Java方法详解">https://wirenjie.github.io/2021/04/30/Java/Java%E6%96%B9%E6%B3%95/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -614,8 +610,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/05/06/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="Java面向对象编程">
-                <i class="fa fa-chevron-left"></i> Java面向对象编程
+              <a href="/2021/04/30/Java/Java%E5%88%9D%E8%A7%81/" rel="next" title="Java初见">
+                <i class="fa fa-chevron-left"></i> Java初见
               </a>
             
           </div>
@@ -624,8 +620,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/05/06/Linux/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" rel="prev" title="Linux基础命令">
-                Linux基础命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/05/06/Java/Java%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" rel="prev" title="Java流程控制">
+                Java流程控制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -799,7 +795,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#yi-chang"><span class="nav-number">1.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-yao-shi-yi-chang"><span class="nav-number">1.1.</span> <span class="nav-text">什么是异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yi-chang-de-fen-lei"><span class="nav-number">1.2.</span> <span class="nav-text">异常的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yi-chang-ti-xi-jie-gou"><span class="nav-number">1.3.</span> <span class="nav-text">异常体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cuo-wu-error"><span class="nav-number">1.4.</span> <span class="nav-text">错误ERROR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exception"><span class="nav-number">1.5.</span> <span class="nav-text">Exception</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-he-exception-de-qu-bie"><span class="nav-number">1.6.</span> <span class="nav-text">Error和Exception的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yi-chang-chu-li-ji-zhi"><span class="nav-number">1.7.</span> <span class="nav-text">异常处理机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pao-chu-yi-chang"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">抛出异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bu-huo-yi-chang"><span class="nav-number">1.7.0.2.</span> <span class="nav-text">捕获异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yi-chang-chu-li-wu-ge-guan-jian-zi"><span class="nav-number">1.7.0.3.</span> <span class="nav-text">异常处理五个关键字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zi-ding-yi-yi-chang"><span class="nav-number">1.8.</span> <span class="nav-text">自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zong-jie"><span class="nav-number">1.9.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-fang-fa-xiang-jie"><span class="nav-number">1.</span> <span class="nav-text">Java方法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-yao-shi-fang-fa"><span class="nav-number">1.1.</span> <span class="nav-text">什么是方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kuo-zhan-zhi-chuan-di-he-yin-yong-chuan-di"><span class="nav-number">1.2.</span> <span class="nav-text">扩展（值传递和引用传递）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fang-fa-de-zhong-zai"><span class="nav-number">1.3.</span> <span class="nav-text">方法的重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ming-ling-xing-chuan-can-liao-jie"><span class="nav-number">1.4.</span> <span class="nav-text">命令行传参（了解）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ke-bian-can-shu"><span class="nav-number">1.5.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#di-gui"><span class="nav-number">1.6.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ji-suan-qi-shi-li"><span class="nav-number">1.7.</span> <span class="nav-text">计算器示例</span></a></li></ol></li></ol></div>
             
 
           </div>
