@@ -251,6 +251,143 @@
       </tags>
   </entry>
   <entry>
+    <title>Java方法详解</title>
+    <url>/2021/05/01/Java/Java%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="java-fang-fa-xiang-jie">Java方法详解</h1>
+<h2 id="shi-yao-shi-fang-fa"><a class="header-anchor" href="#什么是方法">¶</a>什么是方法</h2>
+<p><strong>方法概述：</strong></p>
+<ol>
+<li>
+<p>是执行某个特定功能的代码片段</p>
+</li>
+<li>
+<p>方法包含于类或对象中</p>
+</li>
+<li>
+<p>方法在程序中被创建，在其他地方被引用</p>
+</li>
+</ol>
+<p><strong>设计方法的原则：</strong></p>
+<ol>
+<li>
+<p>方法的本质是功能块，实现某个功能</p>
+</li>
+<li>
+<p>设计方法的时候最好保持方法的原子性（只实现一个功能）</p>
+</li>
+</ol>
+<p><strong>方法的定义：</strong></p>
+<p>方法包含一个方法头和方法体：</p>
+<ol>
+<li>修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型</li>
+<li>返回值类型：可能会返回值，没有返回值则为void</li>
+<li>方法名：方法名称，和参数表共同构成方法签名</li>
+<li>参数类型：
+<ol>
+<li>可选，可不带参数。</li>
+<li>方法被调用时，传递值给参数</li>
+<li>参数列表指方法的参数类型、顺序和参数的个数</li>
+<li>形参：方法调用用于接收外界输入的数据</li>
+<li>实参：调用方法传递给方法的数据</li>
+</ol>
+</li>
+<li>方法体：具体的方法语句，定义方法的功能</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">修饰符  返回值类型  方法名(参数类型  参数名)&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法体</span></span><br><span class="line">    <span class="keyword">return</span> 返回值;</span><br><span class="line">&#125;</span><br><span class="line">例：</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">//实参：实际调用传递的参数</span></span><br><span class="line">        <span class="keyword">int</span> sum = add(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加法</span></span><br><span class="line">	<span class="comment">//形参：用来定义的</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>==return 0; //表示终止方法，类似break==</p>
+<p><strong>方法的调用</strong></p>
+<p>调用方式都是  对象名.方法名，但有两种方式</p>
+<ol>
+<li>
+<p>方法返回值时，方法调用被当作一个值：</p>
+<p>如：int num = max(30, 40);</p>
+</li>
+<li>
+<p>如果方法无返回值，调用为一条语句</p>
+<p>如：System.out.println(“XXX”);</p>
+</li>
+</ol>
+<h2 id="kuo-zhan-zhi-chuan-di-he-yin-yong-chuan-di"><a class="header-anchor" href="#扩展（值传递和引用传递）">¶</a>扩展（值传递和引用传递）</h2>
+<h2 id="fang-fa-de-zhong-zai"><a class="header-anchor" href="#方法的重载">¶</a>方法的重载</h2>
+<p>重载就是在一个类中，有相同的函数名称</p>
+<p>但是形参不同的函数</p>
+<p><strong>重载的原则：</strong></p>
+<ol>
+<li>方法名称必须相同</li>
+<li>参数列表必须不同（个数不同或类型不同，参数排列顺序不同等）</li>
+<li>方法的返回类型可以相同也可以不同</li>
+<li>如果只是返回类型不同不能够称为方法的重载</li>
+</ol>
+<p><strong>实现：</strong></p>
+<ol>
+<li>方法名相同时，编译器会根据调用方法的参数个数、类型等逐个匹配</li>
+<li>匹配完后选择最为准确的方法调用</li>
+<li>如果匹配失败，则编译器报错</li>
+</ol>
+<h2 id="ming-ling-xing-chuan-can-liao-jie"><a class="header-anchor" href="#命令行传参（了解）">¶</a>命令行传参（了解）</h2>
+<p>程序在运行的时候再传递给它消息，通过main()函数实现</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.renjie.wei.method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String i : args) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;args[]:&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//cmd或terminal中调用传参：</span></span><br><span class="line">D:\JavaSE\基础语法\src\com\renjie\wei\method&gt; javac Demo02.java</span><br><span class="line">    </span><br><span class="line">D:\JavaSE\基础语法\src&gt; </span><br><span class="line">java com.renjie.wei.method.Demo02.java hello world ! <span class="comment">//其中hello world！就是传递的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出如下：</span></span><br><span class="line">args[]:hello</span><br><span class="line">args[]:world</span><br><span class="line">args[]:!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="ke-bian-can-shu"><a class="header-anchor" href="#可变参数">¶</a>可变参数</h2>
+<ol>
+<li>
+<p>Java 1.5开始出现</p>
+</li>
+<li>
+<p>支持传递同类型的可变参数给一个方法</p>
+</li>
+<li>
+<p>声明中，在指定参数类型后加一个省略号(…)</p>
+</li>
+<li>
+<p>一个方法中只能指定一个可变参数</p>
+</li>
+<li>
+<p>但必须是方法的最后一个参数</p>
+</li>
+<li>
+<p>任何普通的参数都必须在可变参数之前声明</p>
+</li>
+<li>
+<p>本质就是数组</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Demo03 demo03 = <span class="keyword">new</span> Demo03();</span><br><span class="line">        demo03.test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//可变参数实质就是数组</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span>... b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">            System.out.println(a+b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="di-gui"><a class="header-anchor" href="#递归">¶</a>递归</h2>
+<ol>
+<li>
+<p>递归就是自己调用自己</p>
+</li>
+<li>
+<p>递归可以用简单的程序解决复杂的问题</p>
+</li>
+<li>
+<p>用少量的程序描述出解题过程所需要的多次重复运算</p>
+</li>
+<li>
+<p>大大减少了程序的代码量</p>
+</li>
+<li>
+<p>递归的能力在于用有限的语句来定义对象的无限集合</p>
+</li>
+</ol>
+<p><strong>递归的结构：</strong></p>
+<ol>
+<li>递归头：什么时候不调用自己，没有头将陷入死循环</li>
+<li>递归体：什么时候调用自身方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Demo04 demo04 = <span class="keyword">new</span> Demo04();</span><br><span class="line">    System.out.println(demo04.fatorial(<span class="number">5</span>));</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fatorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>)&#123;   <span class="comment">//递归边界，递归头</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n * fatorial(n-<span class="number">1</span>);  <span class="comment">//递归体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ji-suan-qi-shi-li"><a class="header-anchor" href="#计算器示例">¶</a>计算器示例</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        Demo05 demo05 = <span class="keyword">new</span> Demo05();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入要使用的功能：&quot;</span>);</span><br><span class="line">        String arith = scanner.nextLine();  <span class="comment">//决定四则运算的符号</span></span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第一个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> x = scanner.nextDouble();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第二个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> y = scanner.nextDouble();</span><br><span class="line">        <span class="keyword">switch</span> (arith)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;+&quot;</span>:  <span class="comment">//加法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.add(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;-&quot;</span>:  <span class="comment">//减法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.sub(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;*&quot;</span>:  <span class="comment">//乘法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.mul(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;/&quot;</span>:  <span class="comment">//除法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.div(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">sub</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mul</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a * b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;输入错误请重新输入！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="keyword">return</span> (a / b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>“Java基础”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java流程控制</title>
     <url>/2021/05/06/Java/Java%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
     <content><![CDATA[<h1 id="liu-cheng-kong-zhi">流程控制</h1>
@@ -387,143 +524,6 @@
 <li>如果带标签使用，就会中断到标签所在的地方</li>
 <li>语法  label:    continue label;</li>
 </ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>“Java基础”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java方法详解</title>
-    <url>/2021/05/01/Java/Java%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="java-fang-fa-xiang-jie">Java方法详解</h1>
-<h2 id="shi-yao-shi-fang-fa"><a class="header-anchor" href="#什么是方法">¶</a>什么是方法</h2>
-<p><strong>方法概述：</strong></p>
-<ol>
-<li>
-<p>是执行某个特定功能的代码片段</p>
-</li>
-<li>
-<p>方法包含于类或对象中</p>
-</li>
-<li>
-<p>方法在程序中被创建，在其他地方被引用</p>
-</li>
-</ol>
-<p><strong>设计方法的原则：</strong></p>
-<ol>
-<li>
-<p>方法的本质是功能块，实现某个功能</p>
-</li>
-<li>
-<p>设计方法的时候最好保持方法的原子性（只实现一个功能）</p>
-</li>
-</ol>
-<p><strong>方法的定义：</strong></p>
-<p>方法包含一个方法头和方法体：</p>
-<ol>
-<li>修饰符：可选，告诉编译器如何调用该方法，定义方法的访问类型</li>
-<li>返回值类型：可能会返回值，没有返回值则为void</li>
-<li>方法名：方法名称，和参数表共同构成方法签名</li>
-<li>参数类型：
-<ol>
-<li>可选，可不带参数。</li>
-<li>方法被调用时，传递值给参数</li>
-<li>参数列表指方法的参数类型、顺序和参数的个数</li>
-<li>形参：方法调用用于接收外界输入的数据</li>
-<li>实参：调用方法传递给方法的数据</li>
-</ol>
-</li>
-<li>方法体：具体的方法语句，定义方法的功能</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">修饰符  返回值类型  方法名(参数类型  参数名)&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法体</span></span><br><span class="line">    <span class="keyword">return</span> 返回值;</span><br><span class="line">&#125;</span><br><span class="line">例：</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">//实参：实际调用传递的参数</span></span><br><span class="line">        <span class="keyword">int</span> sum = add(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加法</span></span><br><span class="line">	<span class="comment">//形参：用来定义的</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<p>==return 0; //表示终止方法，类似break==</p>
-<p><strong>方法的调用</strong></p>
-<p>调用方式都是  对象名.方法名，但有两种方式</p>
-<ol>
-<li>
-<p>方法返回值时，方法调用被当作一个值：</p>
-<p>如：int num = max(30, 40);</p>
-</li>
-<li>
-<p>如果方法无返回值，调用为一条语句</p>
-<p>如：System.out.println(“XXX”);</p>
-</li>
-</ol>
-<h2 id="kuo-zhan-zhi-chuan-di-he-yin-yong-chuan-di"><a class="header-anchor" href="#扩展（值传递和引用传递）">¶</a>扩展（值传递和引用传递）</h2>
-<h2 id="fang-fa-de-zhong-zai"><a class="header-anchor" href="#方法的重载">¶</a>方法的重载</h2>
-<p>重载就是在一个类中，有相同的函数名称</p>
-<p>但是形参不同的函数</p>
-<p><strong>重载的原则：</strong></p>
-<ol>
-<li>方法名称必须相同</li>
-<li>参数列表必须不同（个数不同或类型不同，参数排列顺序不同等）</li>
-<li>方法的返回类型可以相同也可以不同</li>
-<li>如果只是返回类型不同不能够称为方法的重载</li>
-</ol>
-<p><strong>实现：</strong></p>
-<ol>
-<li>方法名相同时，编译器会根据调用方法的参数个数、类型等逐个匹配</li>
-<li>匹配完后选择最为准确的方法调用</li>
-<li>如果匹配失败，则编译器报错</li>
-</ol>
-<h2 id="ming-ling-xing-chuan-can-liao-jie"><a class="header-anchor" href="#命令行传参（了解）">¶</a>命令行传参（了解）</h2>
-<p>程序在运行的时候再传递给它消息，通过main()函数实现</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.renjie.wei.method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (String i : args) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;args[]:&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//cmd或terminal中调用传参：</span></span><br><span class="line">D:\JavaSE\基础语法\src\com\renjie\wei\method&gt; javac Demo02.java</span><br><span class="line">    </span><br><span class="line">D:\JavaSE\基础语法\src&gt; </span><br><span class="line">java com.renjie.wei.method.Demo02.java hello world ! <span class="comment">//其中hello world！就是传递的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出如下：</span></span><br><span class="line">args[]:hello</span><br><span class="line">args[]:world</span><br><span class="line">args[]:!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="ke-bian-can-shu"><a class="header-anchor" href="#可变参数">¶</a>可变参数</h2>
-<ol>
-<li>
-<p>Java 1.5开始出现</p>
-</li>
-<li>
-<p>支持传递同类型的可变参数给一个方法</p>
-</li>
-<li>
-<p>声明中，在指定参数类型后加一个省略号(…)</p>
-</li>
-<li>
-<p>一个方法中只能指定一个可变参数</p>
-</li>
-<li>
-<p>但必须是方法的最后一个参数</p>
-</li>
-<li>
-<p>任何普通的参数都必须在可变参数之前声明</p>
-</li>
-<li>
-<p>本质就是数组</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Demo03 demo03 = <span class="keyword">new</span> Demo03();</span><br><span class="line">        demo03.test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//可变参数实质就是数组</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span>... b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.length; i++) &#123;</span><br><span class="line">            System.out.println(a+b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="di-gui"><a class="header-anchor" href="#递归">¶</a>递归</h2>
-<ol>
-<li>
-<p>递归就是自己调用自己</p>
-</li>
-<li>
-<p>递归可以用简单的程序解决复杂的问题</p>
-</li>
-<li>
-<p>用少量的程序描述出解题过程所需要的多次重复运算</p>
-</li>
-<li>
-<p>大大减少了程序的代码量</p>
-</li>
-<li>
-<p>递归的能力在于用有限的语句来定义对象的无限集合</p>
-</li>
-</ol>
-<p><strong>递归的结构：</strong></p>
-<ol>
-<li>递归头：什么时候不调用自己，没有头将陷入死循环</li>
-<li>递归体：什么时候调用自身方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Demo04 demo04 = <span class="keyword">new</span> Demo04();</span><br><span class="line">    System.out.println(demo04.fatorial(<span class="number">5</span>));</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fatorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n==<span class="number">1</span>)&#123;   <span class="comment">//递归边界，递归头</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n * fatorial(n-<span class="number">1</span>);  <span class="comment">//递归体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="ji-suan-qi-shi-li"><a class="header-anchor" href="#计算器示例">¶</a>计算器示例</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        Demo05 demo05 = <span class="keyword">new</span> Demo05();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入要使用的功能：&quot;</span>);</span><br><span class="line">        String arith = scanner.nextLine();  <span class="comment">//决定四则运算的符号</span></span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第一个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> x = scanner.nextDouble();</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第二个数字：&quot;</span>);</span><br><span class="line">        <span class="keyword">double</span> y = scanner.nextDouble();</span><br><span class="line">        <span class="keyword">switch</span> (arith)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;+&quot;</span>:  <span class="comment">//加法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.add(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;-&quot;</span>:  <span class="comment">//减法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.sub(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;*&quot;</span>:  <span class="comment">//乘法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.mul(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;/&quot;</span>:  <span class="comment">//除法</span></span><br><span class="line">                System.out.print(<span class="string">&quot;计算结果为：&quot;</span>);</span><br><span class="line">                    System.out.println(demo05.div(x,y));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a + b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">sub</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mul</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a * b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">div</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;输入错误请重新输入！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="keyword">return</span> (a / b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -926,132 +926,6 @@
       </categories>
       <tags>
         <tag>“JavaGUI”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java之多线程创建</title>
-    <url>/2021/06/02/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="duo-xian-cheng-chuang-jian">多线程创建</h1>
-<h2 id="ji-cheng-thread-lei-zhong"><a class="header-anchor" href="#继承Thread类（重）">¶</a>继承Thread类（重）</h2>
-<ol>
-<li>自定义线程类<strong>继承<em>Thread</em></strong>类</li>
-<li>重写 run() 方法，编写线程执行内容</li>
-<li>创建线程对象，调用 start() 方法启动线程</li>
-</ol>
-<h3 id="duo-xian-cheng-zhi-xing-da-yin-nei-rong"><a class="header-anchor" href="#多线程执行打印内容">¶</a>多线程执行打印内容</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestThread01</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//run方法线程体</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在执行run线程--&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//主方法，main线程</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建run线程对象并调用start方法开启线程</span></span><br><span class="line">        TestThread01 thread = <span class="keyword">new</span> TestThread01();</span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不创建多线程时，程序只会执行主线程</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在执行主线程--&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//执行多线程后，会穿插执行多线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>总结</strong>：线程开启不一定立即执行，由CPU调度</p>
-<h3 id="duo-xian-cheng-xia-zai-tu-pian"><a class="header-anchor" href="#多线程下载图片">¶</a>多线程下载图片</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="comment">//练习多线程下载图片</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestThread02</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;<span class="comment">//图片地址</span></span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//图片保存的文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="title">TestThread02</span><span class="params">(String url,String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//重写run方法，内容为下载图片</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WebDownloader webDownloader = <span class="keyword">new</span> WebDownloader();</span><br><span class="line">        webDownloader.downloader(url,name);</span><br><span class="line">        System.out.println(<span class="string">&quot;下载的文件名为&quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestThread02 thread1 = <span class="keyword">new</span> TestThread02(<span class="string">&quot;https://t7.baidu.com/it/u=3281686603,2838365105&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img1.jpg&quot;</span>);</span><br><span class="line">        TestThread02 thread2 = <span class="keyword">new</span> TestThread02(<span class="string">&quot;https://t7.baidu.com/it/u=60148754,2668908609&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img2.jpg&quot;</span>);</span><br><span class="line">        TestThread02 thread3 = <span class="keyword">new</span> TestThread02(<span class="string">&quot;https://t7.baidu.com/it/u=2798781742,2470678202&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img3.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//多线程条件下，任务是同时进行的，最终谁先下载完成随机</span></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line">        thread3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下载器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WebDownloader</span></span>&#123;</span><br><span class="line">    <span class="comment">//下载方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">downloader</span><span class="params">(String url, String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            FileUtils.copyURLToFile(<span class="keyword">new</span> URL(url),<span class="keyword">new</span> File(name));</span><br><span class="line">        &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="string">&quot;IO异常&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="shi-xian-runnable-jie-kou-zhong"><a class="header-anchor" href="#实现Runnable接口（重）">¶</a>实现Runnable接口（重）</h2>
-<p><strong>步骤：</strong></p>
-<ol>
-<li>定义MyRunnable类<strong>实现Runnable接口</strong></li>
-<li>实现run()方法，编写线程执行内容</li>
-<li>创建线程对象，调用start()方法启动线程</li>
-</ol>
-<p><strong>注意：</strong></p>
-<ol>
-<li>推荐使用Runnable对象，因为Java单继承的局限性</li>
-<li>和继承Thread类的区别就是开启线程的方法上有区别</li>
-</ol>
-<h3 id="shi-xian-runnable-jie-kou"><a class="header-anchor" href="#实现Runnable接口">¶</a>实现Runnable接口</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//实现runnable接口开启多线程</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestRun01</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="comment">//重写方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在重写runnable接口&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建runnable接口的实现类对象</span></span><br><span class="line">        TestRun01 run01 = <span class="keyword">new</span> TestRun01();</span><br><span class="line">        <span class="comment">//通过线程对象开启线程(代理开启)</span></span><br><span class="line">        <span class="keyword">new</span> Thread(run01).start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//主线程</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在执行主线程&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="runnable-jie-kou-shi-xian-xia-zai-tu-pian"><a class="header-anchor" href="#Runnable接口实现下载图片">¶</a>Runnable接口实现下载图片</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="comment">//练习多线程下载图片</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestRun02</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;<span class="comment">//图片地址</span></span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//图片保存的文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="title">TestRun02</span><span class="params">(String url,String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//重写run方法，内容为下载图片</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WebDownloader webDownloader = <span class="keyword">new</span> WebDownloader();</span><br><span class="line">        webDownloader.downloader(url,name);</span><br><span class="line">        System.out.println(<span class="string">&quot;下载的文件名为&quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestRun02 run1 = <span class="keyword">new</span> TestRun02(<span class="string">&quot;https://t7.baidu.com/it/u=3281686603,2838365105&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img1.jpg&quot;</span>);</span><br><span class="line">        TestRun02 run2 = <span class="keyword">new</span> TestRun02(<span class="string">&quot;https://t7.baidu.com/it/u=60148754,2668908609&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img2.jpg&quot;</span>);</span><br><span class="line">        TestRun02 run3 = <span class="keyword">new</span> TestRun02(<span class="string">&quot;https://t7.baidu.com/it/u=2798781742,2470678202&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img3.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//多线程条件下，任务是同时进行的，最终谁先下载完成随机</span></span><br><span class="line">        <span class="keyword">new</span> Thread(run1).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(run2).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(run3).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下载器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WebDownloader</span></span>&#123;</span><br><span class="line">    <span class="comment">//下载方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">downloader</span><span class="params">(String url, String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            FileUtils.copyURLToFile(<span class="keyword">new</span> URL(url),<span class="keyword">new</span> File(name));</span><br><span class="line">        &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="string">&quot;IO异常&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>对比总结：</strong></p>
-<ol>
-<li>继承Thread类实现多线程有<strong>单继承的局限性</strong>，不建议使用</li>
-<li>实现Runnable接口则没有单继承局限性，更加灵活</li>
-</ol>
-<h2 id="duo-xian-cheng-shi-li"><a class="header-anchor" href="#多线程实例">¶</a>多线程实例</h2>
-<h3 id="mai-huo-che-piao"><a class="header-anchor" href="#卖火车票">¶</a>卖火车票</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//多个线程操作同一个对象，买火车票</span></span><br><span class="line"><span class="comment">//存在问题：当多个线程操作同一个资源的情况，线程不安全，数据会紊乱</span></span><br><span class="line"><span class="comment">//此例表现为存在多个人拿到同一张票</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest01</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> ticketNums = <span class="number">10</span>; <span class="comment">//火车票数</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//getName方法能够获得当前执行线程的名字</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">//sleep方法模拟延时，需要捕获异常</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">100</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//没票了则退出</span></span><br><span class="line">            <span class="keyword">if</span> (ticketNums &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;拿到了第&quot;</span> + ticketNums-- + <span class="string">&quot;张票&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ThreadTest01 test01 = <span class="keyword">new</span> ThreadTest01();</span><br><span class="line">        <span class="keyword">new</span> Thread(test01,<span class="string">&quot;小明&quot;</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(test01,<span class="string">&quot;小红&quot;</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(test01,<span class="string">&quot;小刚&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="gui-tu-sai-pao"><a class="header-anchor" href="#龟兔赛跑">¶</a>龟兔赛跑</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//模拟龟兔赛跑</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest02</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="comment">//判断胜利者</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String winner;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//模拟兔子休息</span></span><br><span class="line">            <span class="keyword">if</span>(Thread.currentThread().getName() == <span class="string">&quot;兔子&quot;</span> &amp;&amp; i &gt; <span class="number">10</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//判断比赛是否结束</span></span><br><span class="line">            <span class="keyword">boolean</span> flag = gameOver(i);</span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;当前跑了&quot;</span>+ i + <span class="string">&quot;米&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断比赛是否结束</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">gameOver</span><span class="params">(<span class="keyword">int</span> step)</span></span>&#123;</span><br><span class="line">        <span class="comment">//判断是否存在胜利者</span></span><br><span class="line">        <span class="keyword">if</span> (winner != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(step &gt;= <span class="number">100</span>) &#123; <span class="comment">//如果到达终点则为胜利者</span></span><br><span class="line">            winner = Thread.currentThread().getName();</span><br><span class="line">            System.out.println(<span class="string">&quot;winner is &quot;</span> + winner);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">//若都不满足则比赛未结束，继续比赛</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ThreadTest02 test02 = <span class="keyword">new</span> ThreadTest02();</span><br><span class="line">        <span class="keyword">new</span> Thread(test02,<span class="string">&quot;兔子&quot;</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(test02,<span class="string">&quot;乌龟&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="shi-xian-callable-jie-kou"><a class="header-anchor" href="#实现Callable接口">¶</a>实现Callable接口</h2>
-<ol>
-<li>
-<p>实现Callable接口，需要返回值类型</p>
-</li>
-<li>
-<p>重写call方法，需要抛出异常</p>
-</li>
-<li>
-<p>创建目标对象</p>
-</li>
-<li>
-<p>创建执行服务</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ExecutorService ser = Executors.newFixedThread(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>提交执行</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Future&lt;Boolean&gt;result1 = ser.submit(t1);</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>获取结果</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">boolean</span> r1 = result.get()</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>关闭服务</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ser.shutdownNow();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="callable-jie-kou-xia-zai-tu-pian"><a class="header-anchor" href="#callable接口下载图片">¶</a>callable接口下载图片</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="comment">//实现callable接口,与Runable接口类似</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Boolean</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;<span class="comment">//图片地址</span></span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//图片保存的文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="title">TestCallable</span><span class="params">(String url,String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重写Call方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WebDownloader webDownloader = <span class="keyword">new</span> WebDownloader();</span><br><span class="line">        webDownloader.downloader(url,name);</span><br><span class="line">        System.out.println(<span class="string">&quot;下载的文件名为&quot;</span> + name);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        TestCallable callable1 = <span class="keyword">new</span> TestCallable(<span class="string">&quot;https://t7.baidu.com/it/u=3281686603,2838365105&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img1.jpg&quot;</span>);</span><br><span class="line">        TestCallable callable2 = <span class="keyword">new</span> TestCallable(<span class="string">&quot;https://t7.baidu.com/it/u=60148754,2668908609&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img2.jpg&quot;</span>);</span><br><span class="line">        TestCallable callable3 = <span class="keyword">new</span> TestCallable(<span class="string">&quot;https://t7.baidu.com/it/u=2798781742,2470678202&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img3.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建执行服务,参数为线程数</span></span><br><span class="line">        ExecutorService ser = Executors.newFixedThreadPool(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//提交执行</span></span><br><span class="line">        Future&lt;Boolean&gt; r1 = ser.submit(callable1);</span><br><span class="line">        Future&lt;Boolean&gt; r2 = ser.submit(callable2);</span><br><span class="line">        Future&lt;Boolean&gt; r3 = ser.submit(callable3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取结果,获取线程的返回值</span></span><br><span class="line">        <span class="keyword">boolean</span> res1 = r1.get();</span><br><span class="line">        <span class="keyword">boolean</span> res2 = r2.get();</span><br><span class="line">        <span class="keyword">boolean</span> res3 = r3.get();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//打印返回值,下载完成即为true</span></span><br><span class="line">        System.out.println(res1);</span><br><span class="line">        System.out.println(res2);</span><br><span class="line">        System.out.println(res3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭服务</span></span><br><span class="line">        ser.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>“Java多线程”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java之多线程概述</title>
-    <url>/2021/06/01/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="java-duo-xian-cheng-gai-shu">Java多线程概述</h1>
-<h2 id="jian-jie"><a class="header-anchor" href="#简介">¶</a>简介</h2>
-<h3 id="duo-xian-cheng-thread"><a class="header-anchor" href="#多线程（Thread）">¶</a>多线程（Thread）</h3>
-<ol>
-<li>
-<p>普通方法指程序运行需要先完成调用再继续运行主线程，只有一条执行路径</p>
-</li>
-<li>
-<p>多线程指调用和主线程并行交替执行，存在多条执行路径，效率较高</p>
-</li>
-</ol>
-<h3 id="jin-cheng-process"><a class="header-anchor" href="#进程（Process）">¶</a>进程（Process）</h3>
-<p><strong>操作系统中运行的程序就是进程</strong>，比如QQ、游戏、播放器等</p>
-<p><strong>一个进程可以有多个线程</strong>，比如视频中同时听声音，看图像、弹幕等</p>
-<h3 id="xian-cheng-yu-jin-cheng-de-qu-bie"><a class="header-anchor" href="#线程与进程的区别">¶</a>线程与进程的区别</h3>
-<ol>
-<li><strong>程序</strong>是指令和数据的有序集合，是静态的概念</li>
-<li><strong>进程</strong>是执行程序的一次执行过程，是动态概念，是系统资源分配的单位</li>
-<li>一个进程至少包含一个<strong>线程</strong>，否则进程无存在意义，线程是CPU调度和执行的单位</li>
-</ol>
-<p><strong>注意：</strong></p>
-<ol>
-<li><strong>很多线程是模拟出来的</strong>，<strong>真正的多线程指有多个CPU，即多核</strong>，如服务器</li>
-<li>若是模拟出来的多线程，即单个CPU情况下，同一个时间点，CPU只执行一个代码，只是因为切换的很快，所以有同时执行的错觉</li>
-</ol>
-<h3 id="zong-jie"><a class="header-anchor" href="#总结">¶</a>总结</h3>
-<ol>
-<li>线程就是独立的执行路径</li>
-<li>程序运行时，即使没有自己创建线程，后台也会有多个线程（主线程，gc线程）</li>
-<li>main()称为主线程，为系统的入口，用于执行整个程序</li>
-<li>一个进程中，若开辟了多个线程，线程的运行由调度器安排调度</li>
-<li>调度器与操作系统紧密相关，先后顺序无法人为干预</li>
-<li>对同一份资源操作时，会存在资源抢夺的问题，需要加入并发控制</li>
-<li>线程会带来额外的开销，如CPU调度事件，并发控制开销</li>
-<li>每个线程在自己的工作内存交互，内存控制不当会导致数据不一致</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>“Java多线程”</tag>
       </tags>
   </entry>
   <entry>
@@ -2202,6 +2076,132 @@ a：代表所有人</p>
       </categories>
       <tags>
         <tag>Linux基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java之多线程创建</title>
+    <url>/2021/06/02/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="duo-xian-cheng-chuang-jian">多线程创建</h1>
+<h2 id="ji-cheng-thread-lei-zhong"><a class="header-anchor" href="#继承Thread类（重）">¶</a>继承Thread类（重）</h2>
+<ol>
+<li>自定义线程类<strong>继承<em>Thread</em></strong>类</li>
+<li>重写 run() 方法，编写线程执行内容</li>
+<li>创建线程对象，调用 start() 方法启动线程</li>
+</ol>
+<h3 id="duo-xian-cheng-zhi-xing-da-yin-nei-rong"><a class="header-anchor" href="#多线程执行打印内容">¶</a>多线程执行打印内容</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestThread01</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//run方法线程体</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在执行run线程--&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//主方法，main线程</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建run线程对象并调用start方法开启线程</span></span><br><span class="line">        TestThread01 thread = <span class="keyword">new</span> TestThread01();</span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不创建多线程时，程序只会执行主线程</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在执行主线程--&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//执行多线程后，会穿插执行多线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>总结</strong>：线程开启不一定立即执行，由CPU调度</p>
+<h3 id="duo-xian-cheng-xia-zai-tu-pian"><a class="header-anchor" href="#多线程下载图片">¶</a>多线程下载图片</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="comment">//练习多线程下载图片</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestThread02</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;<span class="comment">//图片地址</span></span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//图片保存的文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="title">TestThread02</span><span class="params">(String url,String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//重写run方法，内容为下载图片</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WebDownloader webDownloader = <span class="keyword">new</span> WebDownloader();</span><br><span class="line">        webDownloader.downloader(url,name);</span><br><span class="line">        System.out.println(<span class="string">&quot;下载的文件名为&quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestThread02 thread1 = <span class="keyword">new</span> TestThread02(<span class="string">&quot;https://t7.baidu.com/it/u=3281686603,2838365105&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img1.jpg&quot;</span>);</span><br><span class="line">        TestThread02 thread2 = <span class="keyword">new</span> TestThread02(<span class="string">&quot;https://t7.baidu.com/it/u=60148754,2668908609&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img2.jpg&quot;</span>);</span><br><span class="line">        TestThread02 thread3 = <span class="keyword">new</span> TestThread02(<span class="string">&quot;https://t7.baidu.com/it/u=2798781742,2470678202&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img3.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//多线程条件下，任务是同时进行的，最终谁先下载完成随机</span></span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line">        thread3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下载器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WebDownloader</span></span>&#123;</span><br><span class="line">    <span class="comment">//下载方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">downloader</span><span class="params">(String url, String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            FileUtils.copyURLToFile(<span class="keyword">new</span> URL(url),<span class="keyword">new</span> File(name));</span><br><span class="line">        &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="string">&quot;IO异常&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="shi-xian-runnable-jie-kou-zhong"><a class="header-anchor" href="#实现Runnable接口（重）">¶</a>实现Runnable接口（重）</h2>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>定义MyRunnable类<strong>实现Runnable接口</strong></li>
+<li>实现run()方法，编写线程执行内容</li>
+<li>创建线程对象，调用start()方法启动线程</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ol>
+<li>推荐使用Runnable对象，因为Java单继承的局限性</li>
+<li>和继承Thread类的区别就是开启线程的方法上有区别</li>
+</ol>
+<h3 id="shi-xian-runnable-jie-kou"><a class="header-anchor" href="#实现Runnable接口">¶</a>实现Runnable接口</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//实现runnable接口开启多线程</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestRun01</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="comment">//重写方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在重写runnable接口&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建runnable接口的实现类对象</span></span><br><span class="line">        TestRun01 run01 = <span class="keyword">new</span> TestRun01();</span><br><span class="line">        <span class="comment">//通过线程对象开启线程(代理开启)</span></span><br><span class="line">        <span class="keyword">new</span> Thread(run01).start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//主线程</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;我在执行主线程&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="runnable-jie-kou-shi-xian-xia-zai-tu-pian"><a class="header-anchor" href="#Runnable接口实现下载图片">¶</a>Runnable接口实现下载图片</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="comment">//练习多线程下载图片</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestRun02</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;<span class="comment">//图片地址</span></span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//图片保存的文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="title">TestRun02</span><span class="params">(String url,String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//重写run方法，内容为下载图片</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WebDownloader webDownloader = <span class="keyword">new</span> WebDownloader();</span><br><span class="line">        webDownloader.downloader(url,name);</span><br><span class="line">        System.out.println(<span class="string">&quot;下载的文件名为&quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestRun02 run1 = <span class="keyword">new</span> TestRun02(<span class="string">&quot;https://t7.baidu.com/it/u=3281686603,2838365105&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img1.jpg&quot;</span>);</span><br><span class="line">        TestRun02 run2 = <span class="keyword">new</span> TestRun02(<span class="string">&quot;https://t7.baidu.com/it/u=60148754,2668908609&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img2.jpg&quot;</span>);</span><br><span class="line">        TestRun02 run3 = <span class="keyword">new</span> TestRun02(<span class="string">&quot;https://t7.baidu.com/it/u=2798781742,2470678202&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img3.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//多线程条件下，任务是同时进行的，最终谁先下载完成随机</span></span><br><span class="line">        <span class="keyword">new</span> Thread(run1).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(run2).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(run3).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下载器</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WebDownloader</span></span>&#123;</span><br><span class="line">    <span class="comment">//下载方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">downloader</span><span class="params">(String url, String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            FileUtils.copyURLToFile(<span class="keyword">new</span> URL(url),<span class="keyword">new</span> File(name));</span><br><span class="line">        &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="string">&quot;IO异常&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>对比总结：</strong></p>
+<ol>
+<li>继承Thread类实现多线程有<strong>单继承的局限性</strong>，不建议使用</li>
+<li>实现Runnable接口则没有单继承局限性，更加灵活</li>
+</ol>
+<h2 id="duo-xian-cheng-shi-li"><a class="header-anchor" href="#多线程实例">¶</a>多线程实例</h2>
+<h3 id="mai-huo-che-piao"><a class="header-anchor" href="#卖火车票">¶</a>卖火车票</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//多个线程操作同一个对象，买火车票</span></span><br><span class="line"><span class="comment">//存在问题：当多个线程操作同一个资源的情况，线程不安全，数据会紊乱</span></span><br><span class="line"><span class="comment">//此例表现为存在多个人拿到同一张票</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest01</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> ticketNums = <span class="number">10</span>; <span class="comment">//火车票数</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//getName方法能够获得当前执行线程的名字</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">//sleep方法模拟延时，需要捕获异常</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">100</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//没票了则退出</span></span><br><span class="line">            <span class="keyword">if</span> (ticketNums &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;拿到了第&quot;</span> + ticketNums-- + <span class="string">&quot;张票&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ThreadTest01 test01 = <span class="keyword">new</span> ThreadTest01();</span><br><span class="line">        <span class="keyword">new</span> Thread(test01,<span class="string">&quot;小明&quot;</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(test01,<span class="string">&quot;小红&quot;</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(test01,<span class="string">&quot;小刚&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="gui-tu-sai-pao"><a class="header-anchor" href="#龟兔赛跑">¶</a>龟兔赛跑</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//模拟龟兔赛跑</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest02</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="comment">//判断胜利者</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String winner;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//模拟兔子休息</span></span><br><span class="line">            <span class="keyword">if</span>(Thread.currentThread().getName() == <span class="string">&quot;兔子&quot;</span> &amp;&amp; i &gt; <span class="number">10</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//判断比赛是否结束</span></span><br><span class="line">            <span class="keyword">boolean</span> flag = gameOver(i);</span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;当前跑了&quot;</span>+ i + <span class="string">&quot;米&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断比赛是否结束</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">gameOver</span><span class="params">(<span class="keyword">int</span> step)</span></span>&#123;</span><br><span class="line">        <span class="comment">//判断是否存在胜利者</span></span><br><span class="line">        <span class="keyword">if</span> (winner != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(step &gt;= <span class="number">100</span>) &#123; <span class="comment">//如果到达终点则为胜利者</span></span><br><span class="line">            winner = Thread.currentThread().getName();</span><br><span class="line">            System.out.println(<span class="string">&quot;winner is &quot;</span> + winner);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">//若都不满足则比赛未结束，继续比赛</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ThreadTest02 test02 = <span class="keyword">new</span> ThreadTest02();</span><br><span class="line">        <span class="keyword">new</span> Thread(test02,<span class="string">&quot;兔子&quot;</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(test02,<span class="string">&quot;乌龟&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="shi-xian-callable-jie-kou"><a class="header-anchor" href="#实现Callable接口">¶</a>实现Callable接口</h2>
+<ol>
+<li>
+<p>实现Callable接口，需要返回值类型</p>
+</li>
+<li>
+<p>重写call方法，需要抛出异常</p>
+</li>
+<li>
+<p>创建目标对象</p>
+</li>
+<li>
+<p>创建执行服务</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ExecutorService ser = Executors.newFixedThread(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>提交执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Future&lt;Boolean&gt;result1 = ser.submit(t1);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>获取结果</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">boolean</span> r1 = result.get()</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>关闭服务</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ser.shutdownNow();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="callable-jie-kou-xia-zai-tu-pian"><a class="header-anchor" href="#callable接口下载图片">¶</a>callable接口下载图片</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Weirenjie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: study</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="comment">//实现callable接口,与Runable接口类似</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCallable</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Boolean</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;<span class="comment">//图片地址</span></span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//图片保存的文件名</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="title">TestCallable</span><span class="params">(String url,String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重写Call方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WebDownloader webDownloader = <span class="keyword">new</span> WebDownloader();</span><br><span class="line">        webDownloader.downloader(url,name);</span><br><span class="line">        System.out.println(<span class="string">&quot;下载的文件名为&quot;</span> + name);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        TestCallable callable1 = <span class="keyword">new</span> TestCallable(<span class="string">&quot;https://t7.baidu.com/it/u=3281686603,2838365105&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img1.jpg&quot;</span>);</span><br><span class="line">        TestCallable callable2 = <span class="keyword">new</span> TestCallable(<span class="string">&quot;https://t7.baidu.com/it/u=60148754,2668908609&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img2.jpg&quot;</span>);</span><br><span class="line">        TestCallable callable3 = <span class="keyword">new</span> TestCallable(<span class="string">&quot;https://t7.baidu.com/it/u=2798781742,2470678202&amp;fm=193&amp;f=GIF&quot;</span>,<span class="string">&quot;img3.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建执行服务,参数为线程数</span></span><br><span class="line">        ExecutorService ser = Executors.newFixedThreadPool(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//提交执行</span></span><br><span class="line">        Future&lt;Boolean&gt; r1 = ser.submit(callable1);</span><br><span class="line">        Future&lt;Boolean&gt; r2 = ser.submit(callable2);</span><br><span class="line">        Future&lt;Boolean&gt; r3 = ser.submit(callable3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取结果,获取线程的返回值</span></span><br><span class="line">        <span class="keyword">boolean</span> res1 = r1.get();</span><br><span class="line">        <span class="keyword">boolean</span> res2 = r2.get();</span><br><span class="line">        <span class="keyword">boolean</span> res3 = r3.get();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//打印返回值,下载完成即为true</span></span><br><span class="line">        System.out.println(res1);</span><br><span class="line">        System.out.println(res2);</span><br><span class="line">        System.out.println(res3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭服务</span></span><br><span class="line">        ser.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>“Java多线程”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java之多线程概述</title>
+    <url>/2021/06/01/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h1 id="java-duo-xian-cheng-gai-shu">Java多线程概述</h1>
+<h2 id="jian-jie"><a class="header-anchor" href="#简介">¶</a>简介</h2>
+<h3 id="duo-xian-cheng-thread"><a class="header-anchor" href="#多线程（Thread）">¶</a>多线程（Thread）</h3>
+<ol>
+<li>
+<p>普通方法指程序运行需要先完成调用再继续运行主线程，只有一条执行路径</p>
+</li>
+<li>
+<p>多线程指调用和主线程并行交替执行，存在多条执行路径，效率较高</p>
+</li>
+</ol>
+<h3 id="jin-cheng-process"><a class="header-anchor" href="#进程（Process）">¶</a>进程（Process）</h3>
+<p><strong>操作系统中运行的程序就是进程</strong>，比如QQ、游戏、播放器等</p>
+<p><strong>一个进程可以有多个线程</strong>，比如视频中同时听声音，看图像、弹幕等</p>
+<h3 id="xian-cheng-yu-jin-cheng-de-qu-bie"><a class="header-anchor" href="#线程与进程的区别">¶</a>线程与进程的区别</h3>
+<ol>
+<li><strong>程序</strong>是指令和数据的有序集合，是静态的概念</li>
+<li><strong>进程</strong>是执行程序的一次执行过程，是动态概念，是系统资源分配的单位</li>
+<li>一个进程至少包含一个<strong>线程</strong>，否则进程无存在意义，线程是CPU调度和执行的单位</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ol>
+<li><strong>很多线程是模拟出来的</strong>，<strong>真正的多线程指有多个CPU，即多核</strong>，如服务器</li>
+<li>若是模拟出来的多线程，即单个CPU情况下，同一个时间点，CPU只执行一个代码，只是因为切换的很快，所以有同时执行的错觉</li>
+</ol>
+<h3 id="zong-jie"><a class="header-anchor" href="#总结">¶</a>总结</h3>
+<ol>
+<li>线程就是独立的执行路径</li>
+<li>程序运行时，即使没有自己创建线程，后台也会有多个线程（主线程，gc线程）</li>
+<li>main()称为主线程，为系统的入口，用于执行整个程序</li>
+<li>一个进程中，若开辟了多个线程，线程的运行由调度器安排调度</li>
+<li>调度器与操作系统紧密相关，先后顺序无法人为干预</li>
+<li>对同一份资源操作时，会存在资源抢夺的问题，需要加入并发控制</li>
+<li>线程会带来额外的开销，如CPU调度事件，并发控制开销</li>
+<li>每个线程在自己的工作内存交互，内存控制不当会导致数据不一致</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>“Java多线程”</tag>
       </tags>
   </entry>
   <entry>
